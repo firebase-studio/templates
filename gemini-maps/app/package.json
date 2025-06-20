@@ -13,7 +13,7 @@
     "@types/google.maps": "^3.55.7",
     "@types/markdown-it": "^14.0.0",
     "typescript": "^5.2.2",
-    "vite": "^5.4.12"
+    "vite": "^5.4.19"
   },
   "dependencies": {
     "@google/generative-ai": "^0.5.0",
