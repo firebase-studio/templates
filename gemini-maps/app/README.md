@@ -12,7 +12,7 @@ In order for the Gemini API features to work, you'll need to add a Gemini API ke
 2. Click on the "Gemini API" integration and authenticate.
 3. Click "Get API Key" to get an API key.
 4. Create or open a file named .env.local in the root directory. The .local suffix keeps secrets out of source control.
-5. In the file, add the line: VITE_GEMINI_API_KEY=YOUR_API_KEY.
+5. In the file, add the line: VITE_GEMINI_API_KEY="YOUR_API_KEY"
 6. Replace YOUR_API_KEY with the API key you got in step 3.
 
 ### Google Maps Platform, Maps JavaScript API
@@ -24,7 +24,7 @@ In order for the Maps JavaScript API features to work, you'll need to add a Goog
 3. Click "Enable APIs" to enable the Google Maps Platform APIs.
 4. Click "Get API Key" to get an API key.
 5. Create or open the file named .env.local in the root directory. The .local suffix keeps secrets out of source control.
-6. In the file, add the line: VITE_MAPS_API_KEY=YOUR_API_KEY.
+6. In the file, add the line: VITE_MAPS_API_KEY="YOUR_API_KEY"
 7. Replace YOUR_API_KEY with the API key you got in step 4.
 
 ## Google Maps Platform Code Assist MCP
