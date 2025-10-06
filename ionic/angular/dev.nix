@@ -6,14 +6,12 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
-    pkgs.unzip # Required for native development
   ];
   # Sets environment variables in the workspace
   env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      "ionic.ionic"
       "angular.ng-template"
     ];
     workspace = {
@@ -23,8 +21,17 @@
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "src/app/app.component.ts" ];
       };
-      # To run your app, use 'npm run start' in the terminal
-      # and press 'Open Preview'
+      # To run something each time the workspace is (re)started, use the `onStart` hook
+    };
+    # Enable previews and customize configuration
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = ["npm" "run" "start" "--" "--port" "$PORT" "--host" "0.0.0.0"];
+          manager = "web";
+        };
+      };
     };
   };
 }

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   channel = "stable-24.11";
-  packages = [ pkgs.nodejs_20 pkgs.unzip ]; # unzip is required for native development
+  packages = [ pkgs.nodejs_20 ];
   bootstrap = ''
     npx --prefer-offline -y @ionic/cli start "$WS_NAME" blank --type=angular --no-deps --no-git --no-link --no-interactive
     mkdir "$WS_NAME"/.idx
@@ -10,9 +10,8 @@
     mkdir -p "$out/.idx"
 
     chmod -R u+w "$out"
-    # The airules.md file is not present in the ionic template, so this line will fail.
-    # cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
-    # cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
+    cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
+    cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
     chmod -R u+w "$out"
 
     (cd "$out"; npm install --package-lock-only --ignore-scripts)

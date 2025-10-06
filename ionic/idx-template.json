@@ -1,8 +1,0 @@
-{
-  "name": "Ionic",
-  "description": "Create a new Ionic app in TypeScript built with ionic-cli",
-  "categories": [
-    "Web app"
-  ],
-  "icon": "https://www.gstatic.com/monospace/231115/logo_ionic.svg"
-}
