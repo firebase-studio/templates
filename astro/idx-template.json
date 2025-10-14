@@ -5,7 +5,7 @@
     "Web app"
   ],
   "icon": "http://foo.svg",
-  "publisher": {},
+  "publisher": "Google",
   "params": [
     {
       "id": "template",
