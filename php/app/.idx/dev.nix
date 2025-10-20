@@ -6,6 +6,7 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.php
+    pkgs.phpPackages.composer
   ];
   # Sets environment variables in the workspace
   env = {};
