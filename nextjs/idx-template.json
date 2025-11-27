@@ -46,6 +46,13 @@
       "type": "boolean",
       "default": true,
       "required": false
+    },
+    {
+      "id": "firebase-tool",
+      "name": "Use firebase-tool",
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   ]
 }
