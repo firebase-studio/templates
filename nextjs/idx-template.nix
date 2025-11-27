@@ -1,6 +1,6 @@
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
-, tailwind ? false, ... }: {
+, tailwind ? false, firebase-tool ? false ... }: {
 
   packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun ];
 
