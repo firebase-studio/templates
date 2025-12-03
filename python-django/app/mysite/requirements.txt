@@ -4,6 +4,6 @@ autopep8
 
 # App
 asgiref==3.7.2
-Django==5.1.14
+Django==5.1.15
 sqlparse==0.4.4
 typing_extensions==4.9.0
