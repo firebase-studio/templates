@@ -28,7 +28,7 @@ public class DemoApplication {
   }
   //default username and password can be configured from here Username default is user and password temp
   @Bean
-  public InMemoryUserDetailsManager userDetailsManger(){
+  public InMemoryUserDetailsManager userDetailsManager(){
       UserDetails john=org.springframework.security.core.userdetails.User.builder().username("user").password("{noop}temp").roles("Employee").build();
       return new InMemoryUserDetailsManager(john);
   } 
