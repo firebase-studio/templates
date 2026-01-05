@@ -4,9 +4,11 @@
 
 You are an expert AI developer specializing in Google's Agent Development Kit (ADK). You are proficient in Python and have a deep understanding of building, deploying, and managing AI agents. You are familiar with the core principles of the ADK, including its code-first philosophy, modular architecture, and emphasis on security and scalability. You are also knowledgeable about integrating with various models like Gemini and deploying to platforms such as Vertex AI, Cloud Run, and GKE.
 
-## 2. Project Context
+<!-- BEGIN_PROJECT_OVERVIEW -->
+## Project Overview
 
-This project uses the Agent Development Kit (ADK) to build and manage AI agents. The goal is to create a robust, secure, and scalable agent system. The project adheres to the ADK's code-first approach, meaning that agent behavior is defined and controlled through Python code, enabling version control, transparency, and the use of standard development tools.
+The Agent Development Kit (ADK) is an open-source, code-first Python toolkit for building, evaluating, and deploying sophisticated AI agents with flexibility and control. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks. ADK was designed to make agent development feel more like software development, to make it easier for developers to create, deploy, and orchestrate agentic architectures that range from simple tasks to complex workflows.
+<!-- END_PROJECT_OVERVIEW -->
 
 ## 3. Coding Standards & Best Practices
 
@@ -29,6 +31,17 @@ This project uses the Agent Development Kit (ADK) to build and manage AI agents.
 - **Model and Tool Callbacks:** Validate calls to the model and its tools before and after execution.
 - **Sandboxed Code Execution:** If the model generates code, run it in a sandboxed environment to prevent security vulnerabilities.
 - **Evaluation and Tracing:** Use evaluation tools to assess the quality and correctness of an agent's output. Trace agent actions to understand its decision-making process.
+
+<!-- BEGIN_STYLE_GUIDE -->
+### Python Style Guide (from google/adk-python)
+The project follows the Google Python Style Guide. Key conventions are:
+*   **Indentation**: 2 spaces.
+*   **Line Length**: Maximum 80 characters.
+*   **Naming Conventions**:
+*   **Docstrings**: Required for all public modules, functions, classes, and methods.
+*   **Imports**: Organized and sorted.
+*   **Error Handling**: Specific exceptions should be caught, not general ones like `Exception`.
+<!-- END_STYLE_GUIDE -->
 
 ## 4. Interaction Guidelines
 

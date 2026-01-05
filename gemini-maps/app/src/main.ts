@@ -1,9 +1,4 @@
-import {
-  GenerateContentRequest,
-  GoogleGenerativeAI,
-  HarmBlockThreshold,
-  HarmCategory,
-} from "@google/generative-ai";
+import { GoogleGenAI,createUserContent, createPartFromBase64, SafetySetting, HarmCategory, HarmBlockThreshold } from "@google/genai";
 import "@googlemaps/extended-component-library/api_loader.js";
 import { APILoader } from "@googlemaps/extended-component-library/api_loader.js";
 import "@googlemaps/extended-component-library/place_overview.js";
@@ -79,37 +74,38 @@ form.addEventListener("submit", async (e) => {
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => Base64.fromByteArray(new Uint8Array(arrayBuffer)));
 
-    // Assemble the prompt by combining the text with the chosen image
-    const contents: GenerateContentRequest["contents"] = [
-      {
-        role: "user",
-        parts: [
-          { inlineData: { mimeType: "image/jpeg", data: imageBase64 } },
-          {
-            text: "What is the name of the place where I can see this image? Only tell me the place name and nothing else (do not add a preamble) so that I can provide the name as an address input for geocoding. The better you follow these instructions the more you'll be rewarded.",
-          },
-        ],
-      },
-    ];
+  // Assemble the prompt by combining the text with the chosen image
+  const contents = [
+    createUserContent([
+      "What is the name of the place where I can see this image? Only tell me the place name and nothing else (do not add a preamble) so that I can provide the name as an address input for geocoding. The better you follow these instructions the more you'll be rewarded.",
+       createPartFromBase64(imageBase64,"image/jpeg")
+    ])
+  ];
 
-    // Call the gemini-pro-vision model, and get a stream of results
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-pro-vision",
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-      ],
-    });
-
-    // Read from the stream and render the output
-    const result = await model.generateContentStream({ contents });
-    for await (const response of result.stream) {
-      placeName = response.text();
-      output.innerHTML = placeName;
+  // Set up the safety settings for the model
+  const safetySettings: SafetySetting[]  = [
+    {
+      category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+      threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH
+    },
+  ];
+ 
+  // Call the gemini-pro-vision model, and get a stream of results
+  const genAI = new GoogleGenAI({ apiKey:GEMINI_API_KEY });
+  const response = await genAI.models.generateContentStream({
+    model: "gemini-2.0-flash",
+    contents: contents,
+    config: {
+      safetySettings: safetySettings,
     }
+   
+  });
+
+  // Read from the stream and render the output
+  for await (const chunk of response) {
+    placeName += chunk.text;
+    output.innerHTML = placeName;
+  }
 
     // Center the map
     const place = await geocodePlace(placeName);

@@ -4,18 +4,18 @@
     pkgs.git
   ];
   bootstrap = ''
-    npx create-remix@latest --yes --no-install --no-git-init --no-init-script "$WS_NAME"
-    mkdir -p "$WS_NAME/.idx/"
-    cp -rf ${./dev.nix} "$WS_NAME/.idx/dev.nix"
-    chmod -R +w "$WS_NAME"
-    mv "$WS_NAME" "$out"
-
-    mkdir -p "$out/.idx"
-    chmod -R u+w "$out"
-    cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
-    cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
-    chmod -R u+w "$out"
-
-    cd "$out"; npm install --package-lock-only --ignore-scripts
+    set -ex
+    mkdir -p "$out"
+    cd "$out"
+    npx create-react-router@latest . --typescript --no-install --no-git-init --yes
+    if [ ! -f "package.json" ]; then
+      exit 1
+    fi
+    mkdir -p .idx
+    cp -rf ${./dev.nix} .idx/dev.nix
+    cp -rf ${./.idx/airules.md} .idx/airules.md
+    cp -f .idx/airules.md GEMINI.md
+    chmod -R u+w .
+    npm install --package-lock-only --ignore-scripts
   '';
 }

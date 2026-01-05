@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.1.0",
-    "@langchain/core": "^0.1.11",
-    "@langchain/google-genai": "^0.0.7",
+    "@google/genai": "^1.30.0",
+    "@langchain/core": "^1.1.1",
+    "@langchain/google-genai": "^2.0.1",
     "base64-js": "^1.5.1",
-    "markdown-it": "^13.0.2"
+    "markdown-it": "^14.1.0"
   },
   "devDependencies": {
-    "vite": "^4.4.5"
+    "vite": "^7.2.6"
   }
 }

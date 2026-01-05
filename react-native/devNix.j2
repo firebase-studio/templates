@@ -13,7 +13,7 @@
     },
     "pnpm": {
         "packages": "pkgs.nodePackages.pnpm",
-        "install": "pnpm add @expo/ngrok@^4.1.0",
+        "install": "pnpm add @expo/ngrok@^4.1.0 @expo/metro-runtime",
         "previewWebPrefix": "\"pnpm\" \"web\"",
         "previewAndroidPrefix": "pnpm android"
     },
@@ -27,7 +27,7 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-23.11"; # or "unstable"
+  channel = "stable-25.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [{{perPackageManager.packages}}];
   # Sets environment variables in the workspace

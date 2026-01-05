@@ -12,7 +12,6 @@ import (
 
 	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/googleai"
-	"github.com/tmc/langchaingo/schema"
 )
 
 // 🔥 FILL THIS OUT FIRST! 🔥
@@ -49,28 +48,48 @@ func generateHandler(w http.ResponseWriter, r *http.Request, llm *googleai.Googl
 		return
 	}
 
+	// Create the image part
+	imageMimeType := "image/jpeg"
+	imagePart := llms.BinaryContent{
+		MIMEType: imageMimeType,
+		Data:     imgData,
+	}
+
+	// Create the text part
+	textPart := llms.TextContent{
+		Text: prompt,
+	}
+
+	// Combine the parts into a MessageContent
 	content := []llms.MessageContent{
 		{
-			Role: schema.ChatMessageTypeHuman,
+			Role: llms.ChatMessageTypeHuman,
 			Parts: []llms.ContentPart{
-				llms.BinaryPart("image/jpeg", imgData),
-				llms.TextPart(prompt),
+				imagePart,
+				textPart,
 			},
 		},
 	}
 
-	_, err = llm.GenerateContent(r.Context(), content,
-		llms.WithModel("gemini-1.5-flash"), // or gemini-1.5-pro
-		llms.WithMaxTokens(500), // default of 256 is not enough.
-		llms.WithStreamingFunc(func(ctx context.Context, chunk []byte) error {
-			fmt.Fprint(w, string(chunk))
-			return nil
-		}),
-	)
+	// Generate Content using the LLM
+	response, err := llm.GenerateContent(
+		r.Context(),
+		content,
+		llms.WithModel("gemini-2.0-flash"),) // or gemini
+
+    // Handle error
 	if err != nil {
 		log.Printf("Error generating content: %v\n", err)
 		http.Error(w, "Error: unable to generate content", http.StatusInternalServerError)
 		return
+	}
+
+	// Handle Response
+	if len(response.Choices) > 0 {
+		generatedText := response.Choices[0].Content
+		fmt.Fprintf(w, "%s", generatedText)
+	} else {
+		fmt.Printf("No content is generated")
 	}
 }
 
@@ -119,7 +138,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	// Serve static files and handle API requests.
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))

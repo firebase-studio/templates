@@ -18,7 +18,8 @@
       "options": {
         "npm": "npm",
         "pnpm": "pnpm",
-        "bun": "bun"
+        "bun": "bun",
+        "yarn": "yarn"
       },
       "required": true
     }

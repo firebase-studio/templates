@@ -4,24 +4,46 @@
   # Which nixpkgs channel to use.
   channel = "stable-25.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
-  packages = [ pkgs.python314 ];
+  packages = [
+    pkgs.uv
+    pkgs.gh
+    pkgs.python314
+  ];
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
-    extensions = [ "ms-python.python" ];
+    extensions = [
+      "ms-python.python"
+      "ms-toolsai.jupyter"
+      "mikoz.black-py"
+      "krish-r.vscode-toggle-terminal"
+      "Google.geminicodeassist"
+    ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        install =
-          "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
-        # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "./multi_tool_agent/agent.py"];
+        create-venv = ''
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          git clone https://github.com/google/adk-samples
+        '';
+        default.openFiles = [
+          "README.md"
+          "./multi_tool_agent/.env.local"
+          "./multi_tool_agent/agent.py"
+        ];
       };
       # Runs each time the workspace is (re)started
       onStart = {
-        install =
-          "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
-        # Open editors for the following files by default, if they exist:
-        default.openFiles = [".env.local" "./multi_tool_agent/agent.py"];
+        web = ''
+          source .venv/bin/activate
+          bash devserver.sh
+        '';
+        default.openFiles = [
+          "README.md"
+          "./multi_tool_agent/.env.local"
+          "./multi_tool_agent/agent.py"
+        ];
       };
     };
     # Enable previews and customize configuration
@@ -30,8 +52,11 @@
       previews = {
         web = {
           command = [ "./devserver.sh" ];
-          env = { PORT = "$PORT"; };
           manager = "web";
+          env = {
+            PORT = "$PORT";
+            FIREBASE_STUDIO = "1";
+          };
         };
       };
     };

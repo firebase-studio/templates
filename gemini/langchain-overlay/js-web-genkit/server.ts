@@ -5,7 +5,6 @@ import { ChatGoogleGenerativeAI } from '@langchain/google-genai'
 import { ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate } from '@langchain/core/prompts';
 import { StringOutputParser } from '@langchain/core/output_parsers';
 import { RunnableSequence } from '@langchain/core/runnables';
-import { HumanMessage } from "@langchain/core/messages";
 
 const port = process.env.PORT || 3000;
 
@@ -14,23 +13,23 @@ export const ai = genkit({
 });
 
 const model = new ChatGoogleGenerativeAI({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.0-flash",
   });
 const systemMessage = SystemMessagePromptTemplate.fromTemplate("Return a recipie in markdown format")
-const userMessageAboutPrompt = HumanMessagePromptTemplate.fromTemplate("The user has asked: {userPrompt}");
-const imageMessage = new HumanMessage({
-    content: [
-      {
+const userMessage = HumanMessagePromptTemplate.fromTemplate([
+    {
+        type: "text",
+        text: "The user has asked: {userPrompt}"
+    },
+    {
         type: "image_url",
         image_url: "{photoUrl}",
-      },
-    ],
-  }); 
+    },
+]);
 
   const prompt = ChatPromptTemplate.fromMessages([
     systemMessage,
-    userMessageAboutPrompt,
-    imageMessage,
+    userMessage,
   ]);
 
   export const recipieWithContextFlow = ai.defineFlow(

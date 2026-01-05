@@ -2,12 +2,12 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 {pkgs}: {
   # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
+  channel = "stable-25.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.php82
-    pkgs.php82Packages.composer
-    pkgs.nodejs_20
+    pkgs.php83
+    pkgs.php84Packages.composer
+    pkgs.nodejs_24
   ];
   # Sets environment variables in the workspace
   env = {};

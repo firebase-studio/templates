@@ -12,11 +12,11 @@
   "author": "Google LLC",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5",
-    "@types/node": "^20.12.12"
+    "@types/node": "^24.10.1"
   }
 }

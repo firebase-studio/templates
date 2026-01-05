@@ -1,6 +1,6 @@
 import {HumanMessage} from '@langchain/core/messages';
 import {ChatGoogleGenerativeAI} from '@langchain/google-genai';
-import {HarmBlockThreshold, HarmCategory} from '@google/generative-ai';
+import {HarmBlockThreshold, HarmCategory} from '@google/genai';
 import Base64 from 'base64-js';
 import MarkdownIt from 'markdown-it';
 import {maybeShowApiKeyBanner} from './gemini-api-banner';
@@ -42,7 +42,7 @@ form.onsubmit = async ev => {
 
     // Call the multimodal model, and get a stream of results
     const vision = new ChatGoogleGenerativeAI({
-      modelName: 'gemini-1.5-flash', // or gemini-1.5-pro
+      model: 'gemini-2.0-flash', // or gemini-1.5-pro
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,

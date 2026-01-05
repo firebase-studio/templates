@@ -12,7 +12,7 @@ const generateTitleButton = document.querySelector("#generate-title");
 const rewriteButton = document.querySelector("#rewrite-review");
 const toxicityButton = document.querySelector("#check-toxicity");
 
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import { marked } from "https://esm.run/marked";
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
@@ -84,14 +84,16 @@ async function generateReviewTitle() {
     outputHTML.innerHTML = `<h2>${promptTitle.value}</h2><p>${reviewText}</p>`;
   } else {
     // Fallback to Gemini API
-    const genAI = new GoogleGenerativeAI(
-      "***REMOVED***"
-    );
-    const model = await genAI.getGenerativeModel({ model: "gemini-pro" });
-    const result = await model.generateContent([
-      `Generate a catchy title for this travel review: ${reviewText} to ${placeName}`,
-    ]);
-    promptTitle.value = result.response.text();
+    const genAI = new GoogleGenAI({ apiKey:GEMINI_API_KEY });
+   
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        `Generate a catchy title for this travel review: ${reviewText} to ${placeName}`,
+      ],
+    }
+      );
+    promptTitle.value = result.text;
     outputHTML.innerHTML = `<h2>${promptTitle.value}</h2><p>${reviewText}</p>`;
   }
 }
@@ -115,16 +117,20 @@ async function rewriteForReadability() {
     outputHTML.innerHTML = `<h2>${promptTitle.value}</h2><p>${rewrittenText}</p>`;
   } else {
     // Fallback to Gemini API
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-    const model = await genAI.getGenerativeModel({ model: "gemini-pro" });
-    const result = await model.generateContent([
-      `Summarize this text, first person: ${reviewText} for a trip to ${placeName}`,
-    ]);
+    const genAI = new GoogleGenAI({ apiKey:GEMINI_API_KEY });
+   
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        `Summarize this text, first person: ${reviewText} for a trip to ${placeName}`,
+      ],
+    }
+      );
     // promptText.value = result.response.text();
     // outputHTML.innerHTML = result.response.text();
     outputHTML.innerHTML = `<h2>${
       promptTitle.value
-    }</h2><p>${result.response.text()}</p>`;
+    }</h2><p>${result.text}</p>`;
   }
 }
 
@@ -163,14 +169,17 @@ async function checkToxicity() {
     // outputHTML.innerHTML = (`Tone Score: ${toxicityScore}`); // Or display in a more user-friendly way
 
     // Fallback to Gemini API
-    const genAI = new GoogleGenerativeAI(
-      "***REMOVED***"
-    );
-    const model = await genAI.getGenerativeModel({ model: "gemini-pro" });
-    const result = await model.generateContent([
-      `Analyze the toxicity level of this text:: ${reviewText}`,
-    ]);
-    outputToneHTML.innerHTML = `<div class="tone-info">Tone: ${result.response.text()}</div>`;
+    const genAI = new GoogleGenAI({ apiKey:GEMINI_API_KEY });
+   
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        `Analyze the toxicity level of this text:: ${reviewText}`,
+      ],
+    }
+      );
+   
+    outputToneHTML.innerHTML = `<div class="tone-info">Tone: ${result.text}</div>`;
   }
 }
 
@@ -199,15 +208,13 @@ async function runBuiltInAIModel(streaming) {
 
 // Function to run the Gemini API model
 async function runGeminiAPIModel(streaming) {
-  const genAI = new GoogleGenerativeAI(
-    "***REMOVED***"
-  );
+  const genAI = new GoogleGenAI({ apiKey:GEMINI_API_KEY });
   const model = await genAI.getGenerativeModel({ model: "gemini-pro" });
   outputHTML.innerHTML = "Generating answer...Please wait...";
 
   if (streaming) {
     // Streaming result
-    const result = await model.generateContentStream([promptText.value]);
+    const result = await genAI.models.generateContentStream([promptText.value]);
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
       outputHTML.innerHTML = marked.parse(chunkText);
@@ -215,8 +222,14 @@ async function runGeminiAPIModel(streaming) {
     }
   } else {
     // Non-streaming result
-    const result = await model.generateContent([promptText.value]);
-    outputHTML.innerHTML = marked.parse(result.response.text());
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        promptText.value,
+      ],
+    }
+      );
+    outputHTML.innerHTML = marked.parse(result.text);
   }
 }
 
