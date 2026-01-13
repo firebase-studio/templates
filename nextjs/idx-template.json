@@ -53,6 +53,16 @@
       "type": "boolean",
       "default": true,
       "required": false
+    },
+    {
+      "id": "firebase-project-id",
+      "name": "Firebase Project ID",
+      "type": "string",
+      "required": true,
+      "visible": {
+        "param": "firebase-tool",
+        "value": true
+      }
     }
   ]
 }
