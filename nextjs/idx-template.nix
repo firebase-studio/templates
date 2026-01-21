@@ -1,38 +1,41 @@
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
-, tailwind ? false, ... }: {
+, tailwind ? false, ... }: let
+  ext = if language == "ts" then "tsx" else "js";
+  dir = if srcDir then "$out/src" else "$out";
+in {
 
   packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun pkgs.firebase-tools ];
 
   bootstrap = ''
-		mkdir "$out"
-		npx create-next-app@${version} "$out" \
-			--yes \
-			--skip-install \
-			--import-alias=${importAlias} \
-			--${language} \
-			--use-${packageManager} \
-			${if eslint then "--eslint" else "--no-eslint"} \
-			${if srcDir then "--src-dir" else "--no-src-dir"} \
-			${if app then "--app" else "--no-app"} \
-			${if tailwind then "--tailwind" else "--no-tailwind"}
+    mkdir "$out"
+    npx create-next-app@${version} "$out" \
+        --yes \
+        --skip-install \
+        --import-alias=${importAlias} \
+        --${language} \
+        --use-${packageManager} \
+        ${if eslint then "--eslint" else "--no-eslint"} \
+        ${if srcDir then "--src-dir" else "--no-src-dir"} \
+        ${if app then "--app" else "--no-app"} \
+        ${if tailwind then "--tailwind" else "--no-tailwind"}
 
-		mkdir -p "$out"/.idx
-		chmod -R u+w "$out"
-		cp ${./dev.nix} "$out"/.idx/dev.nix
-		cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
-		cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
-		chmod -R +w "$out"
+    mkdir -p "$out"/.idx
+    chmod -R u+w "$out"
+    cp ${./dev.nix} "$out"/.idx/dev.nix
+    cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
+    cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
+    chmod -R +w "$out"
 
-		${
-         if packageManager == "npm" then
-           "( cd $out && npm i --package-lock-only --ignore-scripts && npm i firebase )"
-         else
-           ""
-        }
+    ${
+      if packageManager == "npm" then
+        "( cd $out && npm i --package-lock-only --ignore-scripts && npm i firebase )"
+      else
+        ""
+    }
 
-        # Create firebase config
-        cat <<EOF > "$out/firebase.js"
+    # Create firebase config
+    cat <<EOF > "${dir}/firebase.${ext}"
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -49,15 +52,16 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 EOF
 
-        # Create login page
-        mkdir -p "$out/pages"
-        cat <<EOF > "$out/pages/login.js"
+    # Create login page
+    mkdir -p "${dir}/pages"
+    cat <<EOF > "${dir}/pages/login.${ext}"
 import { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import type { User } from "firebase/auth";
 
 export default function Login() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const handleLogin = async () => {
     const provider = new GoogleAuthProvider();
@@ -94,7 +98,7 @@ export default function Login() {
 EOF
 
     # Update index page
-    cat <<EOF > "$out/pages/index.js"
+    cat <<EOF > "${dir}/pages/index.${ext}"
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -120,7 +124,7 @@ export default function Home() {
         </p>
 
         <Link href="/login">
-          <a>Login</a>
+          Login
         </Link>
 
         <div className={styles.grid}>
