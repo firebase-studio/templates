@@ -3,7 +3,7 @@
 , tailwind ? false, firebase-tool ? false, firebase-project-id ? null, firebase-auth-id ? null
 , ... }: {
 
-  packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun pkgs.gnused ]
+  packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun ]
     ++ (if firebase-tool then [ pkgs.firebase-tools ] else []);
 
   bootstrap = ''
@@ -42,20 +42,18 @@
 				
 				APP_DIR=${if srcDir then "'src'" else "'.'" }
 				mkdir -p "$APP_DIR/lib"
-				mkdir -p "$APP_DIR/components"
 
 				FILE_EXT=${if language == "ts" then "'ts'" else "'js'"}
 				CONFIG_FILE="$APP_DIR/lib/firebase.$FILE_EXT"
-				LOGIN_COMPONENT_FILE="$APP_DIR/components/Login.${if language == "ts" then "tsx" else "jsx"}"
 
 				cat <<EOF > "$CONFIG_FILE"
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "${if firebase-auth-id != null then firebase-auth-id else "YOUR_API_KEY"}",
-  authDomain: "${if firebase-project-id != null then "${firebase-project-id}.firebaseapp.com" else "YOUR_PROJECT_ID.firebaseapp.com"}",
+  authDomain: "${if firebase-project-id != null then ''"${firebase-project-id}.firebaseapp.com"'' else "YOUR_PROJECT_ID.firebaseapp.com"}",
   projectId: "${if firebase-project-id != null then firebase-project-id else "YOUR_PROJECT_ID"}",
-  storageBucket: "${if firebase-project-id != null then "${firebase-project-id}.appspot.com" else "YOUR_PROJECT_ID.appspot.com"}",
+  storageBucket: "${if firebase-project-id != null then ''"${firebase-project-id}.appspot.com"'' else "YOUR_PROJECT_ID.appspot.com"}",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
   appId: "YOUR_APP_ID"
 };
@@ -63,118 +61,162 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 EOF
 
-				cat <<'EEOF' > "$LOGIN_COMPONENT_FILE"
-'use client';
+				# If firebase-auth-id is provided, scaffold a simple Firebase email/password login feature using Next.js routing
+				${if firebase-auth-id != null then ''
+					# Choose React file extension for pages/app router
+					REACT_EXT=${if language == "ts" then "'tsx'" else "'js'"}
 
-import { useState, useEffect } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  User,
-} from "firebase/auth";
-import { auth } from "FIREBASE_IMPORT_PLACEHOLDER";
+					# Create a small stylesheet used by the auth pages
+					mkdir -p "$APP_DIR/styles"
+					cat <<'CSS_EOF' > "$APP_DIR/styles/auth.css"
+html, body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.auth-card h3 { margin: 0 0 1rem 0; }
+.auth-field { margin-bottom: 0.75rem; }
+.auth-error { color: #b00020; margin-bottom: 0.5rem; }
+.auth-btn { width: 100%; padding: 0.5rem 0; border: none; background: #0366d6; color: white; border-radius: 6px; cursor: pointer; }
+CSS_EOF
 
-export default function Login() {
+					# Create pages-router or app-router files depending on `app` flag
+					${if app then ''
+						# app router: create app/layout and app/login/page using next/navigation
+						mkdir -p "$APP_DIR/app/login" "$APP_DIR/lib"
+						cat <<EOF > "$APP_DIR/app/layout.$REACT_EXT"
+import '../styles/auth.css';
+export const metadata = { title: 'App' };
+export default function RootLayout({ children }) {
+  return <html lang="en"><body>{children}</body></html>;
+}
+EOF
+
+						cat <<EOF > "$APP_DIR/app/login/page.$REACT_EXT"
+"use client";
+import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../lib/firebase";
+import { useRouter } from "next/navigation";
+
+export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const handleSignUp = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.error("Error signing up:", error);
-    }
-  };
-
-  const handleLogin = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.error("Error logging in:", error);
+      // use Next.js app router navigation
+      router.push("/");
+    } catch (err) {
+      setError(err.message || "Failed to sign in");
+      setLoading(false);
     }
   };
 
-  const handleLogout = async () => {
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <h3>Sign in</h3>
+        {error && <div className="auth-error">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label>Email</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" style={{width:"100%", padding:"8px", boxSizing:"border-box"}} required/>
+          </div>
+          <div className="auth-field">
+            <label>Password</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" style={{width:"100%", padding:"8px", boxSizing:"border-box"}} required/>
+          </div>
+          <button className="auth-btn" type="submit" disabled={loading}>{loading ? "Signing in..." : "Sign in"}</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+EOF
+					'' else ''
+						# pages router: create pages/_app and pages/login using next/router
+						mkdir -p "$APP_DIR/pages" "$APP_DIR/lib"
+						cat <<EOF > "$APP_DIR/pages/_app.$REACT_EXT"
+import '../styles/auth.css';
+${if language == "ts" then "import type { AppProps } from 'next/app';\n\nexport default function MyApp({ Component, pageProps }: AppProps) {\n  return <Component {...pageProps} />;\n}\n" else "export default function MyApp({ Component, pageProps }) {\n  return <Component {...pageProps} />;\n}\n"}
+EOF
+
+						cat <<EOF > "$APP_DIR/pages/login.$REACT_EXT"
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase";
+
+export default function Login() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
     try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Error logging out:", error);
+      await signInWithEmailAndPassword(auth, email, password);
+      // use Next.js pages router navigation
+      router.push("/");
+    } catch (err) {
+      setError(err.message || "Failed to sign in");
+      setLoading(false);
     }
   };
 
   return (
-    <div>
-      {user ? (
-        <div>
-          <p>Welcome, {user.email}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <button onClick={handleSignUp}>Sign Up</button>
-          <button onClick={handleLogin}>Login</button>
-        </div>
-      )}
-    </div>
-  );
-}
-EEOF
-				FIREBASE_IMPORT_PATH=$(echo "${importAlias}" | sed 's,\*.*,lib/firebase,')
-				sed -i "s,FIREBASE_IMPORT_PLACEHOLDER,${FIREBASE_IMPORT_PATH}," "$LOGIN_COMPONENT_FILE"
-
-				LOGIN_IMPORT_PATH=$(echo "${importAlias}" | sed 's,\*.*,components/Login,')
-				if [ ${app} = "true" ]; then
-				  MAIN_PAGE_FILE="$APP_DIR/app/page.${if language == "ts" then "tsx" else "jsx"}"
-					cat <<EOF > "$MAIN_PAGE_FILE"
-import Login from '${LOGIN_IMPORT_PATH}';
-
-export default function Home() {
-  return (
-    <main>
-      <h1>Next.js + Firebase</h1>
-      <Login />
-    </main>
-  );
-}
-EOF
-				else
-				  MAIN_PAGE_FILE="$APP_DIR/pages/index.${if language == "ts" then "tsx" else "jsx"}"
-					cat <<EOF > "$MAIN_PAGE_FILE"
-import Login from '${LOGIN_IMPORT_PATH}';
-
-export default function Home() {
-  return (
-    <div>
-      <h1>Next.js + Firebase</h1>
-      <Login />
+    <div className="auth-container">
+      <div className="auth-card">
+        <h3>Sign in</h3>
+        {error && <div className="auth-error">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label>Email</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" style={{width:"100%", padding:"8px", boxSizing:"border-box"}} required/>
+          </div>
+          <div className="auth-field">
+            <label>Password</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" style={{width:"100%", padding:"8px", boxSizing:"border-box"}} required/>
+          </div>
+          <button className="auth-btn" type="submit" disabled={loading}>{loading ? "Signing in..." : "Sign in"}</button>
+        </form>
+      </div>
     </div>
   );
 }
 EOF
-				fi
+					''}
+
+				'' else ""}
+
 			'' else ""}
+
 		)
 
 		mkdir -p "$out"/.idx
