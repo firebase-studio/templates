@@ -7,6 +7,7 @@
 
   bootstrap = ''
     set -e
+    mainPageFile=""
     mkdir "$out"
     npx create-next-app@${version} "$out" \
       --yes \
@@ -135,7 +136,6 @@
           }
           EOF
 
-          mainPageFile=""
           importPath="${importAliasRoot}/components/login"
           if [ "${builtins.toString app}" = "true" ]; then
             mainPageFile="$baseDir/app/page.${language}x"
