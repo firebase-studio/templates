@@ -33,11 +33,11 @@ idx-template \
   cat <<EOF > "$out/webapp/src/app/page.tsx"
   'use client';
 
-  import Image from "next/image";
   import { useState } from 'react';
   import { auth } from '../firebase';
   import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
   import type { User } from "firebase/auth";
+  import Image from "next/image";
 
   export default function Home() {
     const [user, setUser] = useState<User | null>(null);
@@ -63,38 +63,28 @@ idx-template \
 
     return (
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <main className="relative flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-          {/* Login/Logout Section */}
-          <div className="absolute top-4 right-4">
-            {user ? (
-              <div className="flex items-center gap-4">
-                <p className="text-zinc-600 dark:text-zinc-400">Welcome, {user.displayName}</p>
-                <button 
-                  onClick={handleLogout}
-                  className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <button 
-                onClick={handleLogin}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-              >
-                Login with Google
-              </button>
-            )}
+        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+          <div className="flex w-full justify-between items-center">
+            <Image
+              className="dark:invert"
+              src="/next.svg"
+              alt="Next.js logo"
+              width={100}
+              height={20}
+              priority
+            />
+            <div>
+              {user ? (
+                <div className="flex items-center gap-4">
+                  <p>Welcome, {user.displayName}</p>
+                  <button onClick={handleLogout} className="px-4 py-2 bg-blue-500 text-white rounded-md">Logout</button>
+                </div>
+              ) : (
+                <button onClick={handleLogin} className="px-4 py-2 bg-blue-500 text-white rounded-md">Login with Google</button>
+              )}
+            </div>
           </div>
-
-          <Image
-            className="dark:invert"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={100}
-            height={20}
-            priority
-          />
-          <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+          <div className="flex flex-col items-center gap-6 text-center sm:items-start">
             <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
               To get started, edit the page.tsx file.
             </h1>
@@ -106,7 +96,40 @@ idx-template \
               >
                 Templates
               </a>{" "}
+              or the{" "}
+              <a
+                href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+                className="font-medium text-zinc-950 dark:text-zinc-50"
+              >
+                Learning
+              </a>{" "}
+              center.
             </p>
+          </div>
+          <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+            <a
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="dark:invert"
+                src="/vercel.svg"
+                alt="Vercel logomark"
+                width={16}
+                height={16}
+              />
+              Deploy Now
+            </a>
+            <a
+              className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Documentation
+            </a>
           </div>
         </main>
       </div>
@@ -125,11 +148,7 @@ idx-template \
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
     }
     ${
-      if sample == "nextjs-movie-app" then "
-        mv \"$out\"/app/src/lib/firebase.idx.tsx \"$out\"/app/src/lib/firebase.tsx  
-        mv \"$out\"/app/vite.config.idx.ts \"$out\"/app/vite.config.ts 
-        rm \"$out\"/app/index.html
-      " else ""
+      if sample == "nextjs-movie-app" then "\n        mv \"$out\"/app/src/lib/firebase.idx.tsx \"$out\"/app/src/lib/firebase.tsx  \n        mv \"$out\"/app/vite.config.idx.ts \"$out\"/app/vite.config.ts \n        rm \"$out\"/app/index.html\n      " else ""
     }
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
