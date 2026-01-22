@@ -33,7 +33,12 @@
 					''
             (cd "$out" && ${packageManager} ${installCmd} firebase)
 
-            cat <<EOF > "$out/firebase.ts"
+            baseDir="$out"
+            if ${srcDir}; then
+              baseDir="$out/src"
+            fi
+
+            cat <<EOF > "$baseDir/firebase.ts"
             import { initializeApp, getApps } from "firebase/app";
             import { getAuth } from "firebase/auth";
 
@@ -57,7 +62,7 @@
             export { auth };
             EOF
 
-            cat <<EOF > "$out/login.tsx"
+            cat <<EOF > "$baseDir/login.tsx"
             "use client";
 
             import { useState, useEffect } from 'react';
@@ -94,7 +99,7 @@
               return (
                 <div>
                   {user ? (
-                    <div className='flex justify-center items-center gap-4'>
+                    <div className=\'flex justify-center items-center gap-4\'>
                       <p>{user.displayName}</p>
                       <button onClick={handleLogout} className="py-2 px-4 bg-red-500 text-white rounded-lg">
                         Sign Out
@@ -110,8 +115,23 @@
             }
             EOF
 
-            sed -i 's|import Image from "next/image";|import Image from "next/image";\nimport Login from "../login";|' "$out/app/page.tsx"
-            sed -i 's|<main className="flex|<div className="absolute top-4 left-4"><Login /></div>\n<main className="flex|' "$out/app/page.tsx"
+            mainPageFile=""
+            importPath=""
+            if ${app}; then
+              mainPageFile="$baseDir/app/page.${language}"
+              importPath="../login"
+            else
+              mainPageFile="$baseDir/pages/index.${language}"
+              importPath="../login"
+            fi
+
+            if [ -f "$mainPageFile" ]; then
+              if ${app}; then
+                grep -qxF \''\'use client\';\'\' "$mainPageFile" || sed -i "1i \''\'use client\';\'\'" "$mainPageFile"
+              fi
+              sed -i "0,/import/s|import|import Login from \''${importPath}\'\'\;\\nimport|" "$mainPageFile"
+              sed -i \''0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\\n<main|\'' "$mainPageFile"
+            fi
           ''
 			else
 				""
