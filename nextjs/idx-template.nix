@@ -1,9 +1,9 @@
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
-, tailwind ? false, "firebase-tool" ? false, ... }: {
+, tailwind ? false, firebase-tool ? false, ... }: {
 
   packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun ]
-    ++ (if "firebase-tool" then [ pkgs.nodePackages.firebase-tools ] else [ ]);
+    ++ (if firebase-tool then [ pkgs.nodePackages.firebase-tools ] else [ ]);
 
   bootstrap = ''
 		mkdir "$out"
