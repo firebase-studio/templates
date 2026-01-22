@@ -1,3 +1,4 @@
+
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
 , tailwind ? false, firebase-tool ? false, ... }: {
@@ -29,7 +30,89 @@
 				let
 					installCmd = if packageManager == "npm" then "install" else "add";
 				in
-					"(cd $out && ${packageManager} ${installCmd} firebase firebase-tools firebase-admin)"
+					''
+            (cd "$out" && ${packageManager} ${installCmd} firebase)
+
+            cat <<EOF > "$out/firebase.ts"
+            import { initializeApp, getApps } from "firebase/app";
+            import { getAuth } from "firebase/auth";
+
+            const firebaseConfig = {
+              apiKey: "YOUR_API_KEY",
+              authDomain: "YOUR_AUTH_DOMAIN",
+              projectId: "YOUR_PROJECT_ID",
+              storageBucket: "YOUR_STORAGE_BUCKET",
+              messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+              appId: "YOUR_APP_ID",
+            };
+
+            // Initialize Firebase
+            let app;
+            if (!getApps().length) {
+              app = initializeApp(firebaseConfig);
+            }
+
+            const auth = getAuth(app);
+
+            export { auth };
+            EOF
+
+            cat <<EOF > "$out/login.tsx"
+            "use client";
+
+            import { useState, useEffect } from 'react';
+            import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User } from 'firebase/auth';
+            import { auth } from './firebase';
+
+            export default function Login() {
+              const [user, setUser] = useState<User | null>(null);
+
+              useEffect(() => {
+                const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+                  setUser(currentUser);
+                });
+                return () => unsubscribe();
+              }, []);
+
+              const handleLogin = async () => {
+                const provider = new GoogleAuthProvider();
+                try {
+                  await signInWithPopup(auth, provider);
+                } catch (error) {
+                  console.error(error);
+                }
+              };
+
+              const handleLogout = async () => {
+                try {
+                  await auth.signOut();
+                } catch (error) {
+                  console.error(error);
+                }
+              };
+
+              return (
+                <div>
+                  {user ? (
+                    <div className='flex justify-center items-center gap-4'>
+                      <p>{user.displayName}</p>
+                      <button onClick={handleLogout} className="py-2 px-4 bg-red-500 text-white rounded-lg">
+                        Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <button onClick={handleLogin} className="py-2 px-4 bg-blue-500 text-white rounded-lg">
+                      Login
+                    </button>
+                  )}
+                </div>
+              );
+            }
+            EOF
+
+            sed -i 's|import Image from "next/image";|import Image from "next/image";\nimport Login from "../login";|' "$out/app/page.tsx"
+            sed -i 's|<main className="flex|<div className="absolute top-4 left-4"><Login /></div>\n<main className="flex|' "$out/app/page.tsx"
+          ''
 			else
 				""
 		}
