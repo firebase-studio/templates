@@ -42,6 +42,7 @@ idx-template \
       if sample == "nextjs-movie-app" then "
         mv \"$out\"/app/src/lib/firebase.idx.tsx \"$out\"/app/src/lib/firebase.tsx  
         mv \"$out\"/app/vite.config.idx.ts \"$out\"/app/vite.config.ts 
+        rm \"$out\"/app/index.html
       " else ""
     }
     cp ${./.firebaserc} "$out"/.firebaserc
