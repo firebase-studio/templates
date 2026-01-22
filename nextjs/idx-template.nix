@@ -29,6 +29,7 @@
       if firebaseTool then
         let
           installCmd = if packageManager == "npm" then "install" else "add";
+          importAliasRoot = builtins.replaceStrings ["/*"] [""] importAlias;
         in
           ''
             (cd "$out" && ${packageManager} ${installCmd} firebase)
@@ -37,8 +38,11 @@
             if ${builtins.toString srcDir}; then
               baseDir="$out/src"
             fi
+            
+            mkdir -p "$baseDir/lib"
+            mkdir -p "$baseDir/components"
 
-            cat <<EOF > "$baseDir/src/app/firebase.ts"
+            cat <<EOF > "$baseDir/lib/firebase.ts"
             import { initializeApp, getApps } from "firebase/app";
             import { getAuth } from "firebase/auth";
 
@@ -62,12 +66,12 @@
             export { auth };
             EOF
 
-            cat <<EOF > "$baseDir/src/app/login.tsx"
+            cat <<EOF > "$baseDir/components/login.tsx"
             "use client";
 
             import { useState, useEffect } from "react";
             import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User } from "firebase/auth";
-            import { auth } from "./firebase";
+            import { auth } from "${importAliasRoot}/lib/firebase";
 
             export default function Login() {
               const [user, setUser] = useState<User | null>(null);
@@ -116,16 +120,14 @@
             EOF
 
             mainPageFile=""
-            importPath=""
+            importPath="${importAliasRoot}/components/login"
             if ${builtins.toString app}; then
               mainPageFile="$baseDir/app/page.${language}x"
-              importPath="../login"
               if [ ! -f "$mainPageFile" ]; then
                 mainPageFile="$baseDir/app/page.${language}"
               fi
             else
               mainPageFile="$baseDir/pages/index.${language}x"
-              importPath="./login"
               if [ ! -f "$mainPageFile" ]; then
                  mainPageFile="$baseDir/pages/index.${language}"
               fi
@@ -137,9 +139,9 @@
                 grep -qxF "'use client';" "$mainPageFile" || sed -i "1i 'use client';" "$mainPageFile"
               fi
               # Add the import statement. The sed script is in double quotes.
-              sed -i "0,/import/s|import|import Login from ''${importPath}''\nimport|" "$mainPageFile"
+              sed -i "0,/import/s|import|import Login from ''$importPath''\\nimport|" "$mainPageFile"
               # Add the Login component. The sed script is in single quotes to handle the double quotes in the className.
-              sed -i '0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\n<main|' "$mainPageFile"
+              sed -i '0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\\n<main|' "$mainPageFile"
             fi
           ''
       else
