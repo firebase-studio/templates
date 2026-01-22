@@ -38,7 +38,7 @@
               baseDir="$out/src"
             fi
 
-            cat <<EOF > "$baseDir/firebase.ts"
+            cat <<EOF > "$baseDir/src/app/firebase.ts"
             import { initializeApp, getApps } from "firebase/app";
             import { getAuth } from "firebase/auth";
 
@@ -62,7 +62,7 @@
             export { auth };
             EOF
 
-            cat <<EOF > "$baseDir/login.tsx"
+            cat <<EOF > "$baseDir/src/app/login.tsx"
             "use client";
 
             import { useState, useEffect } from "react";
