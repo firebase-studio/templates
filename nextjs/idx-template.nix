@@ -6,35 +6,35 @@
     ++ (if firebaseTool then [ pkgs.nodePackages.firebase-tools ] else [ ]);
 
   bootstrap = ''
-		mkdir "$out"
-		npx create-next-app@${version} "$out" \
-			--yes \
-			--skip-install \
-			--import-alias=${importAlias} \
-			--${language} \
-			--use-${packageManager} \
-			${if eslint then "--eslint" else "--no-eslint"} \
-			${if srcDir then "--src-dir" else "--no-src-dir"} \
-			${if app then "--app" else "--no-app"} \
-			${if tailwind then "--tailwind" else "--no-tailwind"}
+    mkdir "$out"
+    npx create-next-app@${version} "$out" \
+      --yes \
+      --skip-install \
+      --import-alias=${importAlias} \
+      --${language} \
+      --use-${packageManager} \
+      ${if eslint then "--eslint" else "--no-eslint"} \
+      ${if srcDir then "--src-dir" else "--no-src-dir"} \
+      ${if app then "--app" else "--no-app"} \
+      ${if tailwind then "--tailwind" else "--no-tailwind"}
 
-		mkdir -p "$out"/.idx
-		chmod -R u+w "$out"
-		cp ${./dev.nix} "$out"/.idx/dev.nix
-		cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
-		cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
-		chmod -R +w "$out"
+    mkdir -p "$out"/.idx
+    chmod -R u+w "$out"
+    cp ${./dev.nix} "$out"/.idx/dev.nix
+    cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
+    cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
+    chmod -R +w "$out"
 
-		${
-			if firebaseTool then
-				let
-					installCmd = if packageManager == "npm" then "install" else "add";
-				in
-					''
+    ${
+      if firebaseTool then
+        let
+          installCmd = if packageManager == "npm" then "install" else "add";
+        in
+          ''
             (cd "$out" && ${packageManager} ${installCmd} firebase)
 
             baseDir="$out"
-            if ${srcDir}; then
+            if ${builtins.toString srcDir}; then
               baseDir="$out/src"
             fi
 
@@ -117,7 +117,7 @@
 
             mainPageFile=""
             importPath=""
-            if ${app}; then
+            if ${builtins.toString app}; then
               mainPageFile="$baseDir/app/page.${language}x"
               importPath="../login"
               if [ ! -f "$mainPageFile" ]; then
@@ -132,7 +132,7 @@
             fi
 
             if [ -f "$mainPageFile" ]; then
-              if ${app}; then
+              if ${builtins.toString app}; then
                 # Prepend 'use client'; if it's not there.
                 grep -qxF "'use client';" "$mainPageFile" || sed -i "1i 'use client';" "$mainPageFile"
               fi
@@ -142,11 +142,11 @@
               sed -i '0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\n<main|' "$mainPageFile"
             fi
           ''
-			else
-				""
-		}
+      else
+        ""
+    }
 
-		${
+    ${
       if packageManager == "npm" then
         "( cd $out && npm i --package-lock-only --ignore-scripts )"
       else
