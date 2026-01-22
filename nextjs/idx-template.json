@@ -48,7 +48,7 @@
       "required": false
     },
     {
-      "id": "firebase-tool",
+      "id": "firebaseTool",
       "name": "Use firebase-tool",
       "type": "boolean",
       "default": true,
