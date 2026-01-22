@@ -1,7 +1,7 @@
 
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
-, tailwind ? false, firebase-tool ? false, ... }: {
+, tailwind ? false, firebaseTool ? false, ... }: {
 
   packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun ];
 
@@ -26,7 +26,7 @@
 		chmod -R +w "$out"
 
 		${
-			if firebase-tool then
+			if firebaseTool then
 				let
 					installCmd = if packageManager == "npm" then "install" else "add";
 				in
@@ -118,19 +118,22 @@
             mainPageFile=""
             importPath=""
             if ${app}; then
-              mainPageFile="$baseDir/app/page.${language}"
+              mainPageFile="$baseDir/app/page.${language}x"
               importPath="../login"
             else
-              mainPageFile="$baseDir/pages/index.${language}"
+              mainPageFile="$baseDir/pages/index.${language}x"
               importPath="../login"
             fi
 
             if [ -f "$mainPageFile" ]; then
               if ${app}; then
-                grep -qxF \''\'use client\';\'\' "$mainPageFile" || sed -i "1i \''\'use client\';\'\'" "$mainPageFile"
+                # Prepend 'use client'; if it's not there.
+                grep -qxF "'use client';" "$mainPageFile" || sed -i "1i 'use client';" "$mainPageFile"
               fi
-              sed -i "0,/import/s|import|import Login from \''${importPath}\'\'\;\\nimport|" "$mainPageFile"
-              sed -i \''0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\\n<main|\'' "$mainPageFile"
+              # Add the import statement. The sed script is in double quotes.
+              sed -i "0,/import/s|import|import Login from ''${importPath}'';\nimport|" "$mainPageFile"
+              # Add the Login component. The sed script is in single quotes to handle the double quotes in the className.
+              sed -i '''0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\n<main|''' "$mainPageFile"
             fi
           ''
 			else
