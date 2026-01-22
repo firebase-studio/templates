@@ -1,7 +1,7 @@
 
 { pkgs, version ? "latest", importAlias ? "@/*", language ? "ts"
 , packageManager ? "npm", srcDir ? false, eslint ? false, app ? false
-, tailwind ? false, firebaseTool ? false, ... }: {
+, tailwind ? false, "firebase-tool" ? false, ... }: {
 
   packages = [ pkgs.nodejs_20 pkgs.yarn pkgs.nodePackages.pnpm pkgs.bun ];
 
@@ -26,7 +26,7 @@
 		chmod -R +w "$out"
 
 		${
-			if firebaseTool then
+			if "firebase-tool" then
 				let
 					installCmd = if packageManager == "npm" then "install" else "add";
 				in
@@ -120,9 +120,15 @@
             if ${app}; then
               mainPageFile="$baseDir/app/page.${language}x"
               importPath="../login"
+              if [ ! -f "$mainPageFile" ]; then
+                mainPageFile="$baseDir/app/page.${language}"
+              fi
             else
               mainPageFile="$baseDir/pages/index.${language}x"
-              importPath="../login"
+              importPath="./login"
+              if [ ! -f "$mainPageFile" ]; then
+                 mainPageFile="$baseDir/pages/index.${language}"
+              fi
             fi
 
             if [ -f "$mainPageFile" ]; then
@@ -131,7 +137,7 @@
                 grep -qxF "'use client';" "$mainPageFile" || sed -i "1i 'use client';" "$mainPageFile"
               fi
               # Add the import statement. The sed script is in double quotes.
-              sed -i "0,/import/s|import|import Login from ''${importPath}'';\nimport|" "$mainPageFile"
+              sed -i "0,/import/s|import|import Login from '''${importPath}'''\nimport|" "$mainPageFile"
               # Add the Login component. The sed script is in single quotes to handle the double quotes in the className.
               sed -i '''0,/<main/s|<main|<div className="absolute top-4 left-4"><Login /></div>\n<main|''' "$mainPageFile"
             fi
