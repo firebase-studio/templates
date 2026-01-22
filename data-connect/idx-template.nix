@@ -132,7 +132,7 @@ idx-template \
               target="_blank"
               rel="noopener noreferrer"
             >
-              Documentation
+              Documentation-1
             </a>
           </div>
         </main>
