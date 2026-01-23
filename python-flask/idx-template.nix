@@ -1,4 +1,4 @@
-{ pkgs, packageManager ? "pip", type ? "web", ... }: {
+{ pkgs, packageManager ? "pip", type ? "web", firebaseTool ? false, ... }: {
   packages = [
     pkgs.j2cli
     pkgs.nixfmt
@@ -8,7 +8,7 @@
     chmod -R +w "$WS_NAME"
     chmod +x "$WS_NAME"/devserver.sh
     mkdir -p "$WS_NAME"/.idx
-    packageManager=${packageManager} type=${type} j2 ${./devNix.j2} -o "$WS_NAME"/.idx/dev.nix
+    j2 ${./devNix.j2} -o "$WS_NAME"/.idx/dev.nix --vars "packageManager=${packageManager}" --vars "type=${type}" --vars "firebaseTool=${if firebaseTool then "true" else "false"}"
     nixfmt "$WS_NAME"/.idx/dev.nix
     mv "$WS_NAME" "$out"
 
