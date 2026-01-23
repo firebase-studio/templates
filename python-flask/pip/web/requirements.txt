@@ -4,3 +4,4 @@ autopep8
 
 # App
 flask
+firebase-admin

@@ -15,13 +15,19 @@
   packages = [
     pkgs.python313
     pkgs.python313Packages.pip
+    {% if firebaseTool %}
+    pkgs.firebase-tools
+    pkgs.google-cloud-sdk
+    {% endif %}
   ];
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       "ms-python.python"{% if type == "api" %}
-      "rangav.vscode-thunder-client"{% endif %}
-    ];
+      "rangav.vscode-thunder-client"{% endif %}{% if firebaseTool %}
+      "ms-azuretools.vscode-docker"
+      "google-cloud.google-cloud-vscode"
+    {% endif %}];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {

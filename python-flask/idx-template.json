@@ -24,6 +24,27 @@
         "api": "API Server",
         "web": "Web Server"
       }
+    },
+    {
+      "id": "firebaseTool",
+      "name": "Use firebase-tool",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    {
+      "id": "firebase-project-id",
+      "name": "Firebase Project ID",
+      "type": "string",
+      "required": true,
+      "default": false
+    },
+    {
+      "id": "firebase-auth-id",
+      "name": "Firebase auth ID",
+      "type": "string",
+      "required": true,
+      "default": false
     }
   ]
 }
