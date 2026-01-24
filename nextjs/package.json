@@ -1,0 +1,1 @@
+{\n  "name": "firebase-studio-nextjs-template",\n  "version": "0.0.1",\n  "private": true,\n  "scripts": {\n    "dev": "next dev",\n    "build": "next build",\n    "start": "next start"\n  },\n  "dependencies": {\n    "next": "^13.4.0",\n    "react": "^18.2.0",\n    "react-dom": "^18.2.0"\n  }\n}
