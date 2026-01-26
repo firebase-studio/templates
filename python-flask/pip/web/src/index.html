@@ -1,15 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
-  </head>
-
-  <body>
-    <h1>Hello World</h1>
-    <div id="user-info"></div>
-    <button id="login-button">Login with Google</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 360px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .google-login {
+            background-color: white;
+            color: #4285F4;
+            border: 1px solid #4285F4;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .google-login img {
+            margin-right: 10px;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        .or-divider:not(:empty)::before {
+            margin-right: .25em;
+        }
+        .or-divider:not(:empty)::after {
+            margin-left: .25em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="email"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .remember-me input {
+            margin-right: 5px;
+        }
+        .login-button {
+            background-color: #1877f2;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .forgot-password {
+            font-size: 14px;
+            color: #1877f2;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .register-link {
+            font-size: 14px;
+        }
+        .register-link a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Log in to your account</h1>
+        <div id="user-info"></div>
+        <button class="google-login" id="login-button">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMi4yIDEzIDEzIDEyIDEzLjUgMTAuOCAxNC40IDggMTQgOCAxNCA4IDEwIDkgOC43IDYgOC43IDYgNi43IDcuOCAzLjQgOSAzLjRjMS4yIDAgMi4zLjQgMy4xIDEuMmwxLjctMS43QzEyLjcgMS4zIDEwLjkgMS4zIDkgMS4zIDUuMiAxLjMgMiA0LjcgMiA5YzAgNC4zIDMuMiA3LjcgNyA3LjcgMy41IDAgNi4zLTIuNCA2LjMtNi4zIDAtLjYtLjEtMS4yLS4yLTEuOHoiIGZpbGw9IiNGQkJDMEUiLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi40LjQgMy4yIDEuMkwxNC4zIDNjLTEuMS0xLjItMi44LTEuOS00LjgtMS45LTMuOCA1LTctMi4zLTctNy43IDAtMS43LjUtMy4zIDEuMy00LjRsMi4zIDIuM0g5di4xeiIgZmlsbD0iI0VBNDMzNSIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJjLS44LjYtMS44IDEtMyAxLTEuNyAwLTMuMi0xLjEtMy44LTIuN2wtMy4xIDIuMkM0LjQgMTUuOCA2LjUgMTggOSAxOHoiIGZpbGw9IiM0Mjg1RjQiLz48cGF0aCBkPSJNOSA3LjhjLS43LS41LTEuMi0xLjQtMS4yLTIuMyAwLS41LjItMSAuNS0xLjZsLTMuMi0yLjNDMy4yIDUgMyA2LjUgMyA3LjhjMCAxLjQuMiAyLjggLjYgNC4xbDMuMi0yLjJjLS4zLS44LS40LTEuNy0uNC0yLjV6IiBmaWxsPSIjRkFCN0MxIi8+PC9nPjwvc3ZnPg==" alt="Google logo">
+            Login with Google
+        </button>
+        <div class="or-divider">OR</div>
+        <form>
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+            <button type="submit" class="login-button">Log in</button>
+        </form>
+        <a href="#" class="forgot-password">Forgot Your Password?</a>
+        <div class="register-link">
+            Don't have an account? <a href="#">Register</a>
+        </div>
+    </div>
 
     <script src="/__/firebase/9.6.1/firebase-app-compat.js"></script>
     <script src="/__/firebase/9.6.1/firebase-auth-compat.js"></script>
@@ -50,5 +176,5 @@
           });
       });
     </script>
-  </body>
+</body>
 </html>
