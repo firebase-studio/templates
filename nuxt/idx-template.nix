@@ -1,4 +1,4 @@
-{ pkgs, packageManager, ... }: {
+{ pkgs, packageManager, template,... }: {
 
     packages = [
       pkgs.nodejs_20
@@ -14,7 +14,7 @@
 
     bootstrap = ''
       npx nuxi@latest -y init "$out" \
-        --t "minimal" \
+        --t ${template} \
         --package-manager ${packageManager} \
         --no-install \
         --git-init  <<< "No"
