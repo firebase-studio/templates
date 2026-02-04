@@ -17,6 +17,19 @@
         "bun": "bun"
       },
       "required": true
+    },
+     {
+      "id": "template",
+      "name": "Which template would you like to use?",
+      "type": "enum",
+      "default": "minimal",
+      "options": {
+        "content": "Content-driven website",
+        "minimal": "Minimal setup for Nuxt 4 (recommended)",
+        "module": "Nuxt module",
+        "ui": "App using Nuxt UI"
+      },
+      "required": true
     }
   ]
 }
