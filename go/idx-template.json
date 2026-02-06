@@ -16,7 +16,7 @@
           "web": "Web server",
           "web-template": "Web server with HTML templates",
           "api": "API Server",
-          "api-fiber": "apifiber"
+          "api-fiber": "Api Fiber"
         }
       }
     ]
