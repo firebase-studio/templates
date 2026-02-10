@@ -9,7 +9,7 @@
     PM_NIX_PACKAGE
     pkgs.nodePackages.npm-check-updates
   ];
-  # Sets environment variables in the workspace
+  # Sets environment variables in the workspace.
   env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
