@@ -6,13 +6,19 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
+    pkgs.nodePackages.eslint
+    pkgs.nodePackages.prettier
   ];
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    NG_CLI_ANALYTICS = "ci";
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       "angular.ng-template"
+      "esbenp.prettier-vscode"
+      "dbaeumer.vscode-eslint"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
