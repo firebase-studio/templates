@@ -5,6 +5,8 @@
     npx --prefer-offline -y @ionic/cli start "$WS_NAME" blank --type=angular --no-deps --no-git --no-link --no-interactive
     mkdir "$WS_NAME"/.idx
     cp ${./dev.nix} "$WS_NAME"/.idx/dev.nix && chmod +w "$WS_NAME"/.idx/dev.nix
+    cp ${./.idx/eslint.config.js} "$WS_NAME"/.idx/eslint.config.js
+    cp ${./.idx/update-pkg.js} "$WS_NAME"/.idx/update-pkg.js
     mv "$WS_NAME" "$out"
     
     mkdir -p "$out/.idx"
