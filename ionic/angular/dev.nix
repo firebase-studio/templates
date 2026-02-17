@@ -13,14 +13,11 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       "angular.ng-template"
-      "dbaeumer.vscode-eslint"
-      "esbenp.prettier-vscode"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing || npm i --no-audit --no-progress --timing";
-        update-pkg = "node .idx/update-pkg.js";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "src/app/app.component.ts" ];
       };
