@@ -1,23 +1,22 @@
 {
-    "name": "Go",
-    "description": "Start a simple go backend or a full-stack app",
-    "categories": [
-      "Backend"
-    ],
-    "icon": "https://www.gstatic.com/monospace/231115/logo_go.svg",
-    "publisher": "Google LLC",
-    "params": [
-      {
-        "id": "environment",
-        "name": "Environment",
-        "type": "enum",
-        "default": "web",
-        "options": {
-          "web": "Web server",
-          "web-template": "Web server with HTML templates",
-          "api": "API Server",
-          "api-GorillaMux": "API-GorillaMux"
-        }
+  "name": "Go",
+  "description": "Start a simple go backend or a full-stack app",
+  "categories": [
+    "Backend"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_go.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Environment",
+      "type": "enum",
+      "default": "web",
+      "options": {
+        "web": "Web server",
+        "web-template": "Web server with HTML templates",
+        "api": "API Server"
       }
-    ]
-  }
+    }
+  ]
+}
