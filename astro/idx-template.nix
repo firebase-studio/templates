@@ -30,11 +30,14 @@
     
     # Create eslint config
     cat <<EOF > ./eslint.config.cjs
+const tseslint = require('typescript-eslint');
+const astro = require('eslint-plugin-astro');
+const prettier = require('eslint-config-prettier');
+
 module.exports = [
-  "eslint:recommended",
-  ...require("@typescript-eslint/eslint-plugin").configs.recommended,
-  ...require("eslint-plugin-astro").configs.recommended,
-  "prettier",
+  ...tseslint.configs.recommended,
+  ...astro.configs['flat/recommended'],
+  prettier,
 ];
 EOF
 
@@ -80,8 +83,7 @@ if (fs.existsSync(packageJsonPath)) {
 
   packageJson.devDependencies = {
     ...packageJson.devDependencies,
-    '@typescript-eslint/parser': 'latest',
-    '@typescript-eslint/eslint-plugin': 'latest',
+    'typescript-eslint': 'latest',
     'eslint': '^8.0.0',
     'eslint-plugin-astro': 'latest',
     'eslint-config-prettier': 'latest',
@@ -99,3 +101,4 @@ if (fs.existsSync(packageJsonPath)) {
     ${if packageManager == "npm" then "npm i --package-lock-only --ignore-scripts" else ""}
   '';
 }
+
