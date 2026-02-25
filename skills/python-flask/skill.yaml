@@ -1,0 +1,17 @@
+name: python-flask
+description: Creates a new Python Flask project, either a web server with a frontend or a JSON API.
+
+parameters:
+  packageManager:
+    type: string
+    description: The package manager to use.
+    enum: ['pip', 'poetry']
+    default: pip
+  type:
+    type: string
+    description: The type of application to create.
+    enum: ['web', 'api']
+    default: web
+
+runtime: bash
+entrypoint: install.sh
