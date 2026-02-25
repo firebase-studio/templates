@@ -1,12 +1,11 @@
-
 ---
-name: create_nextjs_workspace
-description: Creates a new Next.js workspace (App Router) with optional TypeScript support and installs custom AI rules.
+name: create_nextjs
+description: Creates a new Next.js project (App Router) with optional TypeScript support and installs custom AI rules.
 inputs:
   - id: workspace_name
     name: Workspace Name
     type: string
-    description: The name of the folder for the new workspace
+    description: The name of the folder for the new project
   - id: language
     name: Language
     type: enum
@@ -18,7 +17,7 @@ inputs:
 
 ## When to Use This Skill
 
-Use this skill when the user wants to create a new Next.js workspace using `create-next-app`, with either JavaScript or TypeScript, and wants the workspace configured with custom AI rules.
+Use this skill when the user wants to create a new Next.js project using `create-next-app`, with either JavaScript or TypeScript, and wants the project configured with custom AI rules.
 
 ## Instructions
 
@@ -31,10 +30,11 @@ Use this skill when the user wants to create a new Next.js workspace using `crea
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Next.js project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.agent/rules.md` file using the content from `resources/ai_rules.md`.
+   - Create the `.agent/rules/nextjs.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agent/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
-   - `package.json` exists in the new workspace
-   - `.agent/rules.md` exists
+   - `package.json` exists in the new project
+   - `.agent/rules/nextjs.md` exists
    - `src/app/page.*` (or `app/page.*` depending on options) exists
