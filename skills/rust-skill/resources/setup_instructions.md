@@ -19,4 +19,4 @@
      Add the extensions: rust-lang.rust-analyzer, tamasfe.even-better-toml, serayuzgur.crates, vadimcn.vscode-lldb
      
 ## 4. Configure Agent Rules
-    Create the `.agent/rules/rust.md` file using the content from `resources/ai_rules.md`
+    Create the `.agent/rules/rust.md` file using the content from `resources/airules.md`
