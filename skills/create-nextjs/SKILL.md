@@ -1,5 +1,5 @@
 ---
-name: create_nextjs
+name: create-nextjs
 description: Creates a new Next.js project (App Router) with optional TypeScript support and installs custom AI rules.
 inputs:
   - id: workspace_name
