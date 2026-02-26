@@ -26,7 +26,7 @@ Run ONE of the following depending on your OS:
 
 #### Windows (PowerShell)
 Run:
-- `powershell -ExecutionPolicy Bypass -File "<skill_root>/scripts/install_node_official.ps1"`
+- `powershell -ExecutionPolicy Bypass -File "scripts/install_node_official.ps1"`
 
 Then restart terminal / Antigravity session and verify:
 - `node -v`
@@ -34,7 +34,7 @@ Then restart terminal / Antigravity session and verify:
 
 #### macOS / Linux (bash)
 Run:
-- `bash "<skill_root>/scripts/install_node_official.sh"`
+- `bash "scripts/install_node_official.sh"`
 
 Then restart shell and verify:
 - `node -v`
@@ -83,7 +83,7 @@ npm install
 
 ## 4. Configure Agent Rules
 
-Create: .agent/rules.md inside the new workspace directory
+Create: .agent/rules/nextjs.md inside the new workspace directory
 
 Copy the content from: resources/ai_rules.md
 
