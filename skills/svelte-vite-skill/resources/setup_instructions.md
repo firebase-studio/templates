@@ -32,16 +32,16 @@ cd $WS_NAME
 npm install
 ```
 
-## 3. Configure Required Extensions
+## 4. Configure Required Extensions
 Add the extensions: svelte.svelte-vscode
 
-## 4. Configure Agent Rules
+## 5. Configure Agent Rules
 Copy the AI rules to the project's agent configuration.
 
 *Action:* Create a file named `.agent/rules.md` inside the new workspace directory (`$WS_NAME/.agent/rules/svelte-vite.md`).
 *Content Source:* Read the content from the `airules.md` resource file provided with this skill.
 
-## 5. Run Server
+## 6. Run Server
 Run the development server using the command
 
 ```bash
