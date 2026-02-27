@@ -38,7 +38,7 @@ Add the extensions: svelte.svelte-vscode
 ## 5. Configure Agent Rules
 Copy the AI rules to the project's agent configuration.
 
-*Action:* Create a file named `.agent/rules.md` inside the new workspace directory (`$WS_NAME/.agent/rules/svelte-vite.md`).
+*Action:* Create a file named `.agent/rules.md` inside the new workspace directory (`$WS_NAME/.agent/rules/svelte_vite.md`).
 *Content Source:* Read the content from the `airules.md` resource file provided with this skill.
 
 ## 6. Run Server

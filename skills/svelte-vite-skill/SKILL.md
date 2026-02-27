@@ -27,4 +27,4 @@ metadata:
     *Action:* Read `resources/setup_instructions.md`.
 
 3.  **Final Verification**
-    Check that `package.json` exists and the `.agent/rules/svelte-vite.md` file is present in the new workspace.
+    Check that `package.json` exists and the `.agent/rules/svelte_vite.md` file is present in the new workspace.
