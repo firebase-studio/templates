@@ -11,16 +11,16 @@ set -e
 if [ -z "$1" ]; then
   # --- INTERACTIVE MODE ---
   # This block runs if the script is executed without any arguments.
-  echo "🚀 Entering interactive mode to create a new Python Flask project..."
+  echo " Entering interactive mode to create a new Python Flask project..."
 
   # 1. Get Project Name from user input, with a default value.
   read -p "Enter project name (default: my-flask-project): " USER_PROJECT_DIR
   PROJECT_DIR=${USER_PROJECT_DIR:-my-flask-project}
-  echo "✅ Project will be created in: '${PROJECT_DIR}'"
+  echo " Project will be created in: '${PROJECT_DIR}'"
 
 
   # 2. Present a menu to select the Package Manager.
-  echo "📦 Select a package manager:"
+  echo " Select a package manager:"
   select choice in "pip (standard Python)" "poetry (modern dependency management)"; do
     case $REPLY in
       1) PACKAGE_MANAGER="pip"; break;;
@@ -30,7 +30,7 @@ if [ -z "$1" ]; then
   done
 
   # 3. Present a menu to select the Application Type.
-  echo "🏗️  Select an application type:"
+  echo "  Select an application type:"
   select choice in "web (Flask with a frontend)" "api (Flask for a JSON API)"; do
     case $REPLY in
       1) APP_TYPE="web"; break;;
@@ -56,20 +56,20 @@ fi
 
 # --- Script Body (remains unchanged) ---
 
-echo "🚀 Creating a new Python Flask project in '${PROJECT_DIR}'..."
+echo " Creating a new Python Flask project in '${PROJECT_DIR}'..."
 
 # 1. Copy source files.
-echo "📦 Copying template files for ${PACKAGE_MANAGER}/${APP_TYPE}..."
+echo " Copying template files for ${PACKAGE_MANAGER}/${APP_TYPE}..."
 SOURCE_PATH="python-flask/${PACKAGE_MANAGER}/${APP_TYPE}"
 cp -rf "${SOURCE_PATH}" "${PROJECT_DIR}"
 
 # 2. Adjust permissions.
-echo "🔒 Setting file permissions..."
+echo " Setting file permissions..."
 chmod -R +w "${PROJECT_DIR}"
 chmod +x "${PROJECT_DIR}/devserver.sh"
 
 # 3. Generate Nix configuration.
-echo "🛠️  Generating Nix environment configuration..."
+echo " Generating Nix environment configuration..."
 mkdir -p "${PROJECT_DIR}/.idx"
 
 nix-shell -p j2cli nixfmt --run "
@@ -78,8 +78,8 @@ nix-shell -p j2cli nixfmt --run "
 "
 
 # 4. Copy AI rules.
-echo "🤖 Copying AI rules..."
+echo " Copying AI rules..."
 cp -f "python-flask/.idx/airules.md" "${PROJECT_DIR}/.idx/airules.md"
 cp -f "python-flask/.idx/airules.md" "${PROJECT_DIR}/GEMINI.md"
 
-echo "✅ Project setup complete! Your Flask app is ready in '${PROJECT_DIR}'."
+echo "Project setup complete! Your Flask app is ready in '${PROJECT_DIR}'."
