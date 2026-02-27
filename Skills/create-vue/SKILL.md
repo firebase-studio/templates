@@ -1,6 +1,6 @@
 ---
-name: create_vue
-description: Creates a new Vue.js project with optional TypeScript support and installs custom AI rules.
+name: create-nextjs
+description: Creates a new Next.js project (App Router) with optional TypeScript support and installs custom AI rules.
 inputs:
   - id: workspace_name
     name: Workspace Name
@@ -17,7 +17,7 @@ inputs:
 
 ## When to Use This Skill
 
-Use this skill when the user wants to create a new Vue.js project using `create-vue`, with either JavaScript or TypeScript, and wants the project configured with custom AI rules.
+Use this skill when the user wants to create a new Next.js project using `create-next-app`, with either JavaScript or TypeScript, and wants the project configured with custom AI rules.
 
 ## Instructions
 
@@ -28,13 +28,13 @@ Use this skill when the user wants to create a new Vue.js project using `create-
 
 2. **Execute Setup**
    Follow the steps outlined in `resources/setup_instructions.md` to:
-   - Create the Vue.js project (using the `workspace_name` and `language` inputs).
+   - Create the Next.js project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.agent/rules/vue.md` file using the content from `resources/ai_rules.md`.
+   - Create the `.agent/rules/nextjs.md` file using the content from `resources/ai_rules.md`.
      - Ensure the `.agent/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project
-   - `.agent/rules/vue.md` exists
-   - `src/main.ts` or `src/main.js` exists
+   - `.agent/rules/nextjs.md` exists
+   - `src/app/page.*` (or `app/page.*` depending on options) exists
