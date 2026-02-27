@@ -2,6 +2,9 @@ name: python-flask
 description: Creates a new Python Flask project, either a web server with a frontend or a JSON API.
 
 parameters:
+  projectName:
+    type: string
+    description: The name for your new project (e.g., my-flask-app).
   packageManager:
     type: string
     description: The package manager to use.
@@ -14,4 +17,4 @@ parameters:
     default: web
 
 runtime: bash
-entrypoint: install.sh
+entrypoint: scripts/install_python_official.sh

@@ -16,7 +16,7 @@ It also supports two different package managers:
 
 ## Antigravity (Agent) Usage
 
-This skill is intended to be used by an AI agent. The agent reads the `skill.yaml` file to understand the available parameters and their possible values. The user can then specify their choices (e.g., "create a flask api with poetry"), and the agent will execute the `install.sh` script with the correct arguments.
+This skill is intended to be used by an AI agent. The agent reads the `skill.yaml` file to understand the available parameters and their possible values. The user can then specify their choices (e.g., "create a flask api with poetry"), and the agent will execute the `install_python_official.sh` script with the correct arguments.
 
 ### Parameters
 
@@ -30,7 +30,7 @@ While intended for agent use, the skill can be run directly from the command lin
 ### Command
 
 ```bash
-bash skills/python-flask/install.sh <project-directory> <package-manager> <app-type>
+bash skills/python-flask/scripts/install_python_official.sh <project-directory> <package-manager> <app-type>
 ```
 
 ### Arguments
@@ -42,5 +42,5 @@ bash skills/python-flask/install.sh <project-directory> <package-manager> <app-t
 ### Example
 
 ```bash
-bash skills/python-flask/install.sh my-new-api poetry api
+bash skills/python-flask/scripts/install_python_official.sh my-new-api poetry api
 ```
