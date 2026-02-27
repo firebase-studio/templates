@@ -1,4 +1,4 @@
-# Next.js Workspace Setup Instructions
+# Vue with Vite Workspace Setup Instructions
 
 Follow these steps to initialize the workspace.
 
@@ -46,46 +46,34 @@ Then restart shell and verify:
 
 ## 2. Create the project
 
-Set workspace name:
-- `WS_NAME="<workspace_name>"`
-
-Then scaffold Next.js:
+Run the following command to create the Vue with Vite project:
 
 ```bash
-# TypeScript
-npx create-next-app@latest "$WS_NAME" \
-  --yes \
-  --ts \
-  --tailwind \
-  --eslint \
-  --app \
-  --src-dir \
-  --import-alias "@/*" \
-  --use-npm \
-  --skip-install
-
-# JavaScript
-npx create-next-app@latest "$WS_NAME" \
-  --yes \
-  --js \
-  --tailwind \
-  --eslint \
-  --app \
-  --src-dir \
-  --import-alias "@/*" \
-  --use-npm \
-  --skip-install
+npm create vue@latest {{workspace_name}} -- --{{language}}
 ```
 
 ## 3. Install dependencies
-cd "$WS_NAME"
-npm install
+
+Run the following command to install the dependencies:
+
+```bash
+cd {{workspace_name}} && npm install
+```
 
 ## 4. Configure Agent Rules
 
-Create: .agent/rules/nextjs.md inside the new workspace directory
+Run the following command to create the `.agent/rules/vue.md` file:
 
-Copy the content from: resources/ai_rules.md
+```bash
+mkdir -p {{workspace_name}}/.agent/rules && cat resources/ai_rules.md > {{workspace_name}}/.agent/rules/vue.md
+```
 
-## 5. Run server
-npm run dev
+## 5. Final Verification
+
+Run the following commands to verify that the project was created successfully:
+
+```bash
+ls {{workspace_name}}/package.json
+ls {{workspace_name}}/.agent/rules/vue.md
+ls {{workspace_name}}/src/main.ts 2>/dev/null || ls {{workspace_name}}/src/main.js
+```
