@@ -1,5 +1,5 @@
 ---
-name: create_react_native_expo
+name: create-react-native-expo
 description: Creates a new React Native project using Expo with optional TypeScript support and installs custom AI rules.
 inputs:
   - id: workspace_name
