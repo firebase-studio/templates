@@ -41,7 +41,7 @@ From the repo root (or any directory), create the folder:
 
 ```bash
 mkdir -p "$WS_NAME"
-
+```
 - Copy the Go API template files into the workspace:
 
 # Copy from this repo’s go/api template into the new workspace
@@ -61,7 +61,8 @@ Commands:
 
 mkdir -p .agent/rules
 # then create .agent/rules/go-api.md and paste contents from resources/ai_rules.md
-4. Run server
+
+## 4. Run server
 go run main.go
 
 The server runs on:
