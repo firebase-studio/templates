@@ -5,7 +5,7 @@ metadata:
   category: ["Web app"]
   tags: ["svelte-vite", "create-svelte-vite"]
   version: "1.0.0"
-  auther: "Google"
+  author: "Google"
 ---
 
 
