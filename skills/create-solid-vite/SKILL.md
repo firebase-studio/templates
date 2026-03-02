@@ -5,7 +5,7 @@ metadata:
   category: ["Web app"]
   tags: ["solid-vite", "create-solid-vite"]
   version: "1.0.0"
-  auther: "Google"
+  author: "Google"
 ---
 
 
