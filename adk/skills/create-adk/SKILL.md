@@ -34,7 +34,6 @@ Use this skill when a user wants to start a new ADK (Agent Development Kit) proj
     Check that all the necessary project files and the AI rules have been created successfully in the `{{workspace_name}}` directory.
 
     *Action:*
-    - Verify that `shell.nix` exists.
     - Verify that `requirements.txt` exists.
     - Verify that `devserver.sh` exists.
     - Verify that `.agent/rules/adk.md` exists.
