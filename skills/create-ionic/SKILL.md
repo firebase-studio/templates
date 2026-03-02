@@ -5,7 +5,7 @@ metadata:
   category: ["Mobile", "Web"]
   tags: ["ionic", "create-ionic"]
   version: "1.0.0"
-  auther: "Google"
+  author: "Google"
 ---
 
 
