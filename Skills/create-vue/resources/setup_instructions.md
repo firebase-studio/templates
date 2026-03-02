@@ -46,34 +46,40 @@ Then restart shell and verify:
 
 ## 2. Create the project
 
-Run the following command to create the Vue with Vite project:
+First, set a variable for your workspace name:
+- `WS_NAME="<workspace_name>"`
+
+Then, run one of the following commands to scaffold your Vue project:
 
 ```bash
-npm create vue@latest {{workspace_name}} -- --{{language}}
+# For a TypeScript project
+npm create vue@latest "$WS_NAME" -- --ts
+
+# For a JavaScript project
+npm create vue@latest "$WS_NAME" -- --js
 ```
 
 ## 3. Install dependencies
 
-Run the following command to install the dependencies:
+Navigate into your new project directory and install the dependencies.
 
 ```bash
-cd {{workspace_name}} && npm install
+cd "$WS_NAME"
+npm install
 ```
 
 ## 4. Configure Agent Rules
 
-Run the following command to create the `.agent/rules/vue.md` file:
+Run the following command to create the required `.agent/rules/vue.md` file inside your new workspace directory:
 
 ```bash
-mkdir -p {{workspace_name}}/.agent/rules && cat resources/ai_rules.md > {{workspace_name}}/.agent/rules/vue.md
+mkdir -p .agent/rules && cat ../skills/create-vue/resources/ai_rules.md > .agent/rules/vue.md
 ```
 
-## 5. Final Verification
+## 5. Run the dev server
 
-Run the following commands to verify that the project was created successfully:
+Your project is now ready. Start the development server by running:
 
 ```bash
-ls {{workspace_name}}/package.json
-ls {{workspace_name}}/.agent/rules/vue.md
-ls {{workspace_name}}/src/main.ts 2>/dev/null || ls {{workspace_name}}/src/main.js
+npm run dev
 ```
