@@ -86,8 +86,8 @@ Download and write each file from the repository's `ruby/` folder into `$WS_NAME
 
 The core files to copy from `https://raw.githubusercontent.com/firebase-studio/templates/main/ruby/` are:
 
-| Source (raw GitHub URL)                                                                 | Destination in workspace |
-|-----------------------------------------------------------------------------------------|--------------------------|
+| Source (raw GitHub URL)    | Destination in workspace   |
+|----------------------------|----------------------------|
 | `.../ruby/app.rb`          | `$WS_NAME/app.rb`          |
 | `.../ruby/Gemfile`         | `$WS_NAME/Gemfile`         |
 | `.../ruby/Gemfile.lock`    | `$WS_NAME/Gemfile.lock`    |
