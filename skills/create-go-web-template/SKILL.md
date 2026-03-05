@@ -1,6 +1,6 @@
 ---
-name: create-go-api
-description: Creates a new Go API project (net/http) by copying the go/api template files and installs custom AI rules.
+name: create-go-web-template
+description: Creates a new Go web server project by copying the go/web-template template files and installs custom AI rules.
 inputs:
   - id: workspace_name
     name: Workspace Name
@@ -10,7 +10,7 @@ inputs:
 
 ## When to Use This Skill
 
-Use this skill when the user wants to create a minimal Go HTTP API project (stdlib `net/http`) from the Go API template (`go/api`) and run it locally with Go installed.
+Use this skill when the user wants to create a minimal Go web server project (stdlib `net/http`, `html/template`) from the `go/web-template` template and run it locally with Go installed.
 
 ## Instructions
 
@@ -23,13 +23,14 @@ Use this skill when the user wants to create a minimal Go HTTP API project (stdl
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Ensure Go is installed (Go 1.20+).
    - Create the workspace folder (using the `workspace_name` input).
-   - Copy template files from `go/api` into the new workspace.
-   - Create the `.agent/rules/go-api.md` file using the content from `resources/ai_rules.md`.
+   - Copy template files from `go/web-template` into the new workspace.
+   - Create the `.agent/rules/go-web-template.md` file using the content from `resources/ai_rules.md`.
      - Ensure the `.agent/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `main.go` exists in the new project
+   - `main_test.go` exists in the new project
    - `go.mod` exists in the new project
    - `README.md` exists in the new project
-   - `.agent/rules/go-api.md` exists
+   - `.agent/rules/go-web-template.md` exists

@@ -153,7 +153,7 @@ cp -R "$EXTRACTED"/. "$INSTALL_DIR"/
 ln -sfn "$INSTALL_DIR" "$INSTALL_BASE/current"
 
 GO_BIN="$INSTALL_BASE/current/bin"
-EXPORT_LINE="export PATH=\"$GO_BIN:\$PATH\""
+EXPORT_LINE="export PATH="$GO_BIN:\$PATH""
 MARKER="# >>> antigravity go >>>"
 
 write_profile() {

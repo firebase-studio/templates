@@ -1,4 +1,4 @@
-# Go API Workspace Setup Instructions
+# Go Web Template Workspace Setup Instructions
 
 Follow these steps to initialize the workspace.
 
@@ -42,43 +42,60 @@ From the repo root (or any directory), create the folder:
 ```bash
 mkdir -p "$WS_NAME"
 ```
-- Copy the Go API template files into the workspace:
 
-# Copy from this repo’s go/api template into the new workspace
-cp -R "<skill_root>/../../go/api/." "$WS_NAME/"
+Copy the Go web-template files into the workspace:
+
+```bash
+# Copy from this repo’s go/web-template template into the new workspace
+cp -R "<skill_root>/../../go/web-template/." "$WS_NAME/"
+```
 
 Then enter the workspace:
 
+```bash
 cd "$WS_NAME"
+```
+
+---
 
 ## 3. Configure Agent Rules
 
-Create: .agent/rules/go-api.md inside the new workspace directory.
+Create: `.agent/rules/go-web-template.md` inside the new workspace directory.
 
-Copy the content from: resources/ai_rules.md
+Copy the content from: `resources/ai_rules.md`
 
 Commands:
 
+```bash
 mkdir -p .agent/rules
-# then create .agent/rules/go-api.md and paste contents from resources/ai_rules.md
+# then create .agent/rules/go-web-template.md and paste contents from resources/ai_rules.md
+```
+
+---
 
 ## 4. Run server
+
+Run:
+
+```bash
 go run main.go
+```
 
-The server runs on:
-
-http://localhost:3000 (default)
-
-Optional env vars:
-
-PORT to change port
-
-NAME to change greeting
+Notes:
+- Default address: `0.0.0.0:8080`
+- If you want to bind explicitly: `go run main.go -addr localhost:8080`
+- If 8080 is busy, choose another port: `go run main.go -addr localhost:3000`
 
 Verify:
 
-curl http://localhost:3000/
+```bash
+curl http://localhost:8080/
+```
 
-Expected response contains:
+---
 
-Hello World!
+## 5. Run tests (optional)
+
+```bash
+go test ./...
+```
