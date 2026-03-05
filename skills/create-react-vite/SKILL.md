@@ -1,14 +1,16 @@
 ---
 name: create-react-vite
-description: Creates a new React project using Vite with optional TypeScript support and installs custom AI rules.
+displayName: Create React Vite App
+description: Creates a new React project using Vite.
+owner: google
+tags: [react, vite, web]
 inputs:
-  - id: workspace_name
-    name: Workspace Name
+  - name: workspace_name
     type: string
-    description: The name of the folder for the new project
-  - id: language
-    name: Language
-    type: enum
+    description: The name of the new project and directory.
+  - name: language
+    type: string
+    description: The language for the project.
     default: js
     options:
       js: JavaScript
@@ -30,12 +32,5 @@ Use this skill when the user wants to create a new React project using Vite, wit
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Vite project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.idx/airules.md` and `GEMINI.md` files using the content from `resources/ai_rules.md`.
-     - Ensure the `.idx/` directory exists.
-
-3. **Final Verification**
-   Check that:
-   - `package.json` exists in the new project directory.
-   - `.idx/airules.md` exists.
-   - `GEMINI.md` exists.
-   - `src/App.tsx` (for TypeScript) or `src/App.jsx` (for JavaScript) exists in the project's root.
+   - Create the `.agent/rules/react_vite.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agent/rules/` directory exists.

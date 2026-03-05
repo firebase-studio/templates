@@ -74,14 +74,13 @@ npm install --package-lock-only --ignore-scripts
 
 ## 4. Configure Agent Rules
 
-Create new files for the AI agent's rules inside the workspace directory:
+Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
-- `.idx/airules.md`
-- `GEMINI.md`
+```bash
+mkdir -p .agent/rules
+```
 
-Copy the content from this skill's resources into the files you just created:
-
-- `resources/ai_rules.md`
+(The skill runner will place the content of `resources/ai_rules.md` into `.agent/rules/react_vite.md`)
 
 
 ## 5. Run the Development Server
