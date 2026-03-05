@@ -61,7 +61,7 @@ npm install
 
 ```bash
 mkdir -p ".agent/rules"
-cp "../../skills/qwik-city-vite/resources/ai_rules.md" ".agent/rules/qwik-city-vite.md"
+cp "../skills/qwik-city-vite/resources/ai_rules.md" ".agent/rules/qwik-city-vite.md"
 ```
 
 ## 5. Run server
