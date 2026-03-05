@@ -75,7 +75,7 @@ Fetch the raw file tree to understand what is inside the `app` folder (i.e. ever
 ### 3a. Create the workspace directory
 
 ```bash
-mkdir -p /Users/farhankdi/.gemini/antigravity/scratch/$WS_NAME
+mkdir -p $WS_NAME
 ```
 
 Replace `$WS_NAME` with the name chosen by the user (default: `ruby-app`).
