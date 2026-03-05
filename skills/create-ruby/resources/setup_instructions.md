@@ -126,7 +126,7 @@ Create or append to `$WS_NAME/.vscode/extensions.json` with the following conten
 Navigate into the workspace and run Bundler to install all gems:
 
 ```bash
-cd /Users/farhankdi/.gemini/antigravity/scratch/$WS_NAME && bundle install
+cd $WS_NAME && bundle install
 ```
 
 Wait for the command to complete successfully before reporting back to the user.
