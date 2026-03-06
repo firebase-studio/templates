@@ -9,7 +9,7 @@
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUTHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -44,10 +44,10 @@ if [ "$OS" == "linux" ]; then
     exit 1
   fi
   # Get the latest LTS version for the specified major version
-  NODE_VERSION=$(curl -sL "https://nodejs.org/dist/index.json" | grep -A 5 '"version": "v'"$NODE_MAJOR"' | grep '"lts":' | head -1 | awk -F'"' 'NR==1 {print $4}' | sed 's/v//')
+  NODE_VERSION=$(curl -sL "https://nodejs.org/dist/index.json" | grep -A 5 '"version": "v'$NODE_MAJOR'"' | grep '"lts":' | head -1 | awk -F'"' 'NR==1 {print $4}' | sed 's/v//')
   DOWNLOAD_URL="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODE_ARCH}.tar.xz"
 elif [ "$OS" == "darwin" ]; then # macOS
-  NODE_VERSION=$(curl -sL "https://nodejs.org/dist/index.json" | grep -A 5 '"version": "v'"$NODE_MAJOR"' | grep '"lts":' | head -1 | awk -F'"' 'NR==1 {print $4}' | sed 's/v//')
+  NODE_VERSION=$(curl -sL "https://nodejs.org/dist/index.json" | grep -A 5 '"version": "v'$NODE_MAJOR'"' | grep '"lts":' | head -1 | awk -F'"' 'NR==1 {print $4}' | sed 's/v//')
   # For macOS, we can use the pkg installer
   DOWNLOAD_URL="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.pkg"
 else

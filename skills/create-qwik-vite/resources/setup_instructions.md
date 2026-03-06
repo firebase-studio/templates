@@ -22,7 +22,7 @@ If Node.js or npm are not installed or are outdated, use one of the following co
 **For macOS or Linux (bash):**
 
 ```bash
-bash <(curl -s "https://raw.githubusercontent.com/project-idx/official-templates/main/skills/create-qwik-vite/scripts/install_node_official.sh")
+bash scripts/install_node_official.sh
 ```
 
 Then restart your shell and verify the installation:
@@ -35,7 +35,7 @@ npm -v
 **For Windows (PowerShell):**
 
 ```powershell
-iex (irm "https://raw.githubusercontent.com/project-idx/official-templates/main/skills/create-qwik-vite/scripts/install_node_official.ps1")
+scripts/install_node_official.ps1
 ```
 
 Then restart your terminal and verify the installation:
@@ -68,14 +68,13 @@ npm install --package-lock-only --ignore-scripts
 
 ## 4. Configure Agent Rules
 
-Create new files for the AI agent's rules inside the workspace directory:
+Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
-- `.agent/rules/qwik-vite.md`
-- `GEMINI.md`
+```bash
+mkdir -p .agent/rules
+```
 
-Copy the content from this skill's resources into the files you just created:
-
-- `resources/ai_rules.md`
+(The skill runner will place the content of `resources/ai_rules.md` into `.agent/rules/qwik-vite.md`)
 
 
 ## 5. Run the Development Server
