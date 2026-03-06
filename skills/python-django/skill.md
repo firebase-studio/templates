@@ -1,56 +1,37 @@
+
 ---
 name: python-django
-description: Creates a new Python Django project.
+description: Creates a new Python Django project, setting up a virtual environment, installing Django, and adding custom AI rules.
 
-parameters:
-  projectName:
+inputs:
+  - id: projectName
+    name: Project Name
     type: string
-    description: The name for your new project (e.g., my-django-app).
-
-entrypoints:
-  - runtime: bash
-    entrypoint: scripts/install_django.sh
-  - runtime: powershell
-    entrypoint: scripts/install_django.ps1
+    description: The name of the folder for the new project (e.g., my-django-app).
 ---
-# Python Django Project Skill
 
-This skill automates the creation of a new Python Django project within the repository.
+## When to Use This Skill
 
-## 1. Prerequisites
+Use this skill when the user wants to create a new Python Django project, and wants the project automatically configured with an isolated virtual environment and custom AI rules.
 
-This skill requires the following to be installed:
-- **Python**: Version 3.8 or later.
-- **pip**: Should be included with your Python installation.
+## Instructions
 
-### Verification
+1. **Read Setup Instructions**
 
-Run the following commands to check if the prerequisites are installed:
-- `python --version`
-- `pip --version`
+   Review the [setup instructions](resources/setup_instructions.md) to understand how to initialize the project and install dependencies.
 
-## 2. Platform Support
+   *Action: Read `resources/setup_instructions.md`.*
 
-This skill is platform-independent and is expected to work on macOS, Linux, and Windows.
+2. **Guide the User**
 
-## 3. Manual Usage
+   Walk the user through the steps outlined in `resources/setup_instructions.md` to:
+   - Ensure Python and pip are installed.
+   - Create the Django project using the `projectName` input. The setup scripts handle the rest.
+   - Note that dependency installation is handled automatically by the script.
+   - Note that the `.idx/airules.md` and `GEMINI.md` files are also created automatically.
 
-While intended for agent use, the skill can be run directly from the command line.
+3. **Final Verification**
 
-### Arguments
+   Verify that the project was created successfully by checking for the existence of the new project directory and key files within it.
 
-- `<project-name>`: The name of the new folder to create for your project (e.g., `my-django-app`).
-
-### Example
-
-To create a new Django app named `my-django-app`:
-
-**PowerShell**
-```powershell
-pwsh skills/python-django/scripts/install_django.ps1 -ProjectName my-django-app
-```
-
-**Bash**
-```bash
-bash skills/python-django/scripts/install_django.sh my-django-app
-```
+   *Action: `list_files(path=projectName)` and confirm that `manage.py` and a `devserver` script exist.*

@@ -1,60 +1,78 @@
-# Django Setup Instructions
+# Django Workspace Setup Instructions
 
-This document provides instructions on how to set up and run a new Django project.
+Follow these steps to initialize the workspace.
 
-## 1. Prerequisites
+---
 
-- Python 3.8+
-- pip (Python package installer)
+## 1. Install prerequisites (Python + pip)
 
-## 2. Create a Virtual Environment
+This skill requires:
+- Python (recommended 3.8+)
+- pip (usually bundled with Python)
 
-It is highly recommended to use a virtual environment to manage project dependencies.
+### 1.1 Verify Installation
+
+Run the following commands to check if the prerequisites are installed:
+- `python --version`
+- `pip --version`
+
+If both commands work, you can proceed to **Step 2**.
+
+### 1.2 Install Python
+
+If Python is not installed, download it from the official website: [python.org](https://www.python.org/downloads/) or install it via your operating system's package manager.
+
+---
+
+## 2. Create the Django Project
+
+This step uses a setup script to scaffold the new project, create an isolated virtual environment, and install Django.
+
+First, choose a name for your workspace:
+`PROJECT_NAME="my-django-app"`
+
+Then, run ONE of the following commands depending on your operating system:
+
+#### Windows (PowerShell)
+```powershell
+powershell -ExecutionPolicy Bypass -File "skills/python-django/scripts/install_django.ps1" -ProjectName "$PROJECT_NAME"
+```
+
+#### macOS / Linux (bash)
+```bash
+bash "skills/python-django/scripts/install_django.sh" "$PROJECT_NAME"
+```
+
+This single command handles the entire project and dependency setup.
+
+---
+
+## 3. Configure Agent Rules
+
+The setup script from the previous step has already configured the workspace for AI-assisted development by creating the following files inside your new project directory:
+- `.idx/airules.md`
+- `GEMINI.md`
+
+No manual action is required for this step.
+
+---
+
+## 4. Run the Development Server
+
+Once the project is created, navigate into the new directory and start the server.
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\\Scripts\\activate`
+cd "$PROJECT_NAME"
 ```
 
-## 3. Install Django
+Then, run the appropriate command for your OS:
 
-Install Django using pip:
+#### Windows
+```bat
+devserver.bat
+```
 
+#### macOS / Linux
 ```bash
-pip install django
-```
-
-## 4. Create a Django Project
-
-Use the `django-admin` command-line utility to create a new project.
-
-```bash
-django-admin startproject myproject .
-```
-
-This will create a `myproject` directory in your current directory.
-
-## 5. Run the Development Server
-
-Once the project is created, you can run the development server.
-
-```bash
-python manage.py runserver
-```
-
-The server will start on `http://127.0.0.1:8000/`.
-
-## 6. Project Structure
-
-A newly created Django project has the following structure:
-
-```
-.
-├── manage.py
-└── myproject
-    ├── __init__.py
-    ├── asgi.py
-    ├── settings.py
-    ├── urls.py
-    └── wsgi.py
+./devserver.sh
 ```
