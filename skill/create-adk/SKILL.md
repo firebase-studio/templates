@@ -1,6 +1,6 @@
 ---
 name: create-adk-project
-description: Creates a new ADK project with a Nix-based environment and installs custom AI rules.
+description: Creates a new ADK project by copying template files and installs custom AI rules.
 inputs:
   - id: workspace_name
     name: Workspace Name
@@ -10,30 +10,28 @@ inputs:
 
 ## When to Use This Skill
 
-Use this skill when a user wants to start a new ADK (Agent Development Kit) project. This skill will bootstrap a complete project structure with a reproducible development environment using Nix.
+Use this skill when the user wants to create a new Python-based agent project using the Agent Development Kit (ADK) from the standard template and run it locally.
 
 ## Instructions
 
-1.  **Create Project Files**
-    Create the core project files within the directory specified by `workspace_name`.
+1. **Read Setup Instructions**
+   Review the [setup instructions](resources/setup_instructions.md) to understand how to initialize the project and install prerequisites.
 
-    *Action:*
-    - Create a `shell.nix` file for the Nix environment.
-    - Create a `requirements.txt` file for Python dependencies.
-    - Create a `devserver.sh` script to run the application.
-    - Create a `.gitignore` file.
+   *Action:* Read `resources/setup_instructions.md`.
 
-2.  **Install AI Rules**
-    Copy the predefined AI rules into the project's `.agent/rules/` directory. This allows the AI assistant to have context-specific rules for the project.
+2. **Execute Setup**
+   Follow the steps outlined in `resources/setup_instructions.md` to:
+   - Ensure Python (3.10+) and the ADK are installed.
+   - Create the workspace folder (using the `workspace_name` input).
+   - Copy template files from `skills/create-adk/template` into the new workspace.
+   - Create the `.agent/rules/adk-app.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agent/rules/` directory exists.
 
-    *Action:*
-    - Create the `.agent/rules/` directory inside the new project.
-    - Copy the content from `skills/adk/resources/airules.md` to `{{workspace_name}}/.agent/rules/adk.md`.
-
-3.  **Final Verification**
-    Check that all the necessary project files and the AI rules have been created successfully in the `{{workspace_name}}` directory.
-
-    *Action:*
-    - Verify that `requirements.txt` exists.
-    - Verify that `devserver.sh` exists.
-    - Verify that `.agent/rules/adk.md` exists.
+3. **Final Verification**
+   Check that:
+   - `main.py` exists in the new project
+   - `requirements.txt` exists in the new project
+   - `devserver.sh` exists in the new project
+   - The `agents/` directory exists in the new project
+   - The `tools/` directory exists in the new project
+   - `.agent/rules/adk-app.md` exists
