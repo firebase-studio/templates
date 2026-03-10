@@ -35,7 +35,7 @@ npm -v
 **For Windows (PowerShell):**
 
 ```powershell
-scripts/install_node_official.ps1
+powershell -ExecutionPolicy Bypass -File "scripts/install_node_official.ps1"
 ```
 
 Then restart your terminal and verify the installation:
