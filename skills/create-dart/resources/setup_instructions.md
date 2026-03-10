@@ -69,6 +69,20 @@ Created project my_dart_app in my-dart-app! In order to get started, run the fol
   dart run bin/server.dart
 ```
 
+### 2.1 Copy watcher utility
+
+Copy the `watcher.dart` utility from the skill resources to your new project's `bin` directory.
+
+```bash
+cp -R "skills/create-dart/dart/watcher.dart" "my-dart-app/bin/"
+```
+
+Then enter the workspace:
+
+```bash
+cd "my-dart-app"
+```
+
 ## 3. Install dependencies
 
 cd into the new project directory and run `dart pub get`:
