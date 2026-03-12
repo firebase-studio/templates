@@ -1,4 +1,4 @@
-# Go Web Template Workspace Setup Instructions
+# Go Web Workspace Setup Instructions
 
 Follow these steps to initialize the workspace.
 
@@ -43,11 +43,11 @@ From the repo root (or any directory), create the folder:
 mkdir -p "$WS_NAME"
 ```
 
-Copy the Go web-template files into the workspace:
+Copy the Go web template files into the workspace:
 
 ```bash
-# Copy from this repo’s go/web-template template into the new workspace
-cp -R "<skill_root>/../../go/web-template/." "$WS_NAME/"
+# Copy from this repo’s go/web template into the new workspace
+cp -R "<skill_root>/../../go/web/." "$WS_NAME/"
 ```
 
 Then enter the workspace:
@@ -60,7 +60,7 @@ cd "$WS_NAME"
 
 ## 3. Configure Agent Rules
 
-Create: `.agent/rules/go-web-template.md` inside the new workspace directory.
+Create: `.agent/rules/go-web.md` inside the new workspace directory.
 
 Copy the content from: `resources/ai_rules.md`
 
@@ -68,7 +68,7 @@ Commands:
 
 ```bash
 mkdir -p .agent/rules
-# then create .agent/rules/go-web-template.md and paste contents from resources/ai_rules.md
+# then create .agent/rules/go-web.md and paste contents from resources/ai_rules.md
 ```
 
 ---
@@ -78,24 +78,20 @@ mkdir -p .agent/rules
 Run:
 
 ```bash
-go run main.go
+go run server.go
 ```
 
 Notes:
-- Default address: `0.0.0.0:8080`
-- If you want to bind explicitly: `go run main.go -addr localhost:8080`
-- If 8080 is busy, choose another port: `go run main.go -addr localhost:3000`
+- Default address: `localhost:8080`
+- If you want to bind to all interfaces (often helpful for previews), run:
+  - `go run server.go -addr 0.0.0.0:8080`
+- Change greeting:
+  - `go run server.go -g Hi`
 
 Verify:
 
 ```bash
 curl http://localhost:8080/
-```
-
----
-
-## 5. Run tests (optional)
-
-```bash
-go test ./...
+curl http://localhost:8080/version
+curl http://localhost:8080/ChatGPT
 ```
