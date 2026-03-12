@@ -2,7 +2,20 @@
 
 Follow these steps to initialize the workspace.
 
-## 1. Create the Project
+## 1. Install PHP (if not already installed)
+
+This step ensures that PHP is installed on the system. If it's already present, the installation will be skipped.
+
+```bash
+# The skill will automatically detect your OS and run the correct script.
+if [ "$OS" = "Windows_NT" ]; then
+  ./scripts/install_php.ps1
+else
+  ./scripts/install_php.sh
+fi
+```
+
+## 2. Create the Project
 
 Create a new directory with the given workspace name and navigate into it.
 
@@ -11,7 +24,7 @@ mkdir -p {{workspace_name}}
 cd {{workspace_name}}
 ```
 
-## 2. Copy Template Files
+## 3. Copy Template Files
 
 Copy the PHP template files into the new directory.
 
@@ -19,7 +32,7 @@ Copy the PHP template files into the new directory.
 cp -r ../../php/app/* .
 ```
 
-## 3. Configure Agent Rules
+## 4. Configure Agent Rules
 
 Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
