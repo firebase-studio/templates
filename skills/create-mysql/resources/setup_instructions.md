@@ -11,6 +11,25 @@ This workspace comes pre-configured with:
 
 Dependencies are installed automatically when the workspace is created via the `npm install` command in `.idx/dev.nix`.
 
+This skill requires Node.js (LTS) and npm.
+
+### 1.1. Verify
+- `node -v`
+- `npm -v`
+
+If both commands work, go to **Step 2**.
+
+### 1.2. Install automatically (recommended)
+Run ONE of the following for your OS:
+
+#### Windows (PowerShell)
+- `powershell -ExecutionPolicy Bypass -File "skills/create-mysql/scripts/install_node_official.ps1"`
+
+#### macOS / Linux (bash)
+- `bash "skills/create-mysql/scripts/install_node_official.sh"`
+
+Then restart your terminal session and verify.
+
 ## 2. Connect to the Database
 
 The MySQL server is available and running. You can connect to it in two primary ways:
@@ -53,5 +72,5 @@ Create a new directory and file for the agent rules:
 
 ```bash
 mkdir -p .agent/rules
-cp skill_creation/resources/ai_rules.md .agent/rules/mysql.md
+cp skills/create-mysql/resources/ai_rules.md .agent/rules/mysql.md
 ```
