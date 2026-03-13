@@ -22,11 +22,11 @@ Use this skill when the user wants to create a new Blazor project and wants the 
 2. **Execute Setup**
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Blazor project (using the `workspace_name` input).
-   - Create the `.agent/rules/dotnet.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/dotnet.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - A `.csproj` file exists in the new project.
-   - `.agent/rules/dotnet.md` exists.
+   - `.agents/rules/dotnet.md` exists.
    - `Program.cs` and a `Components` directory exist.
