@@ -58,7 +58,7 @@ This command creates a new Angular project with the following options:
 
 **3. Create AI Rules**
 
-Create a new file at `.agent/rules/angular.md` with the content from `resources/ai_rules.md`.
+Create a new file at `.agents/rules/angular.md` with the content from `resources/ai_rules.md`.
 
 **4. Install Dependencies**
 
