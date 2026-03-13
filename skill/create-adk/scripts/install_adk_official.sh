@@ -64,7 +64,7 @@ To activate this environment and start working, run:
   source ./.venv/bin/activate
 
 Once activated, you can:
- - Run your ADK agent (e.g., 'python main.py')
+ - Run your ADK agents (e.g., 'python main.py')
  - Use the 'adk' command-line tool.
 
 To deactivate the environment when you are finished, simply run:
