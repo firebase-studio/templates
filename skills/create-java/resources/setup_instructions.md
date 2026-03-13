@@ -64,16 +64,16 @@ rm "${WS_NAME}.zip"
 
 This command creates a new Spring Boot application with `spring-boot-starter-web` and `spring-boot-devtools`.
 
-## 3. Configure Agent Rules
+## 3. Configure Agents Rules
 
 Move into the new project directory:
 `cd "$WS_NAME"`
 
-Create the agent rules directory:
-`mkdir -p .agent/rules/`
+Create the agents rules directory:
+`mkdir -p .agents/rules/`
 
 Copy the AI rules:
-`cp ../resources/ai_rules.md .agent/rules/java.md`
+`cp ../resources/ai_rules.md .agents/rules/java.md`
 
 ## 4. Run the server
 
