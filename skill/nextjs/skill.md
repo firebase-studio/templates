@@ -5,7 +5,7 @@ description: A skill for creating a Next.js project.
 ---
 # Skill: Next.js
 
-This document provides all the necessary information for an automated agent to bootstrap a new Next.js project.
+This document provides all the necessary information for an automated agents to bootstrap a new Next.js project.
 
 ## Platforms
 - **OS:**
@@ -19,7 +19,7 @@ This document provides all the necessary information for an automated agent to b
 - **Version:** ">=20.0.0"
 
 ### Package Managers
-The agent must have at least one of the following package managers available:
+The agents must have at least one of the following package managers available:
 - **Tool:** npm
 - **Version:** ">=10.0.0"
 - **Tool:** yarn
