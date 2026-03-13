@@ -60,16 +60,16 @@ cd {{workspace_name}} && npm install
 
 ## Step 4: Create AI Rules
 
-Create a new file at `.agent/rules/astro.md` with the following content:
+Create a new file at `.agents/rules/astro.md` with the following content:
 
 ```
 The user is building a web application with Astro, a modern front-end framework. Your primary role is to assist them in developing, debugging, and deploying their Astro project. If you need to install dependencies, use the `npm install` command. The user's project is located in the current working directory, and the application can be served by running `npm run dev`.
 ```
 
-Ensure the `.agent/rules/` directory exists before creating the file.
+Ensure the `.agents/rules/` directory exists before creating the file.
 
 ```bash
-mkdir -p .agent/rules && cat <<EOF > .agent/rules/astro.md
+mkdir -p .agents/rules && cat <<EOF > .agents/rules/astro.md
 The user is building a web application with Astro, a modern front-end framework. Your primary role is to assist them in developing, debugging, and deploying their Astro project. If you need to install dependencies, use the `npm install` command. The user's project is located in the current working directory, and the application can be served by running `npm run dev`.
 EOF
 ```
