@@ -27,4 +27,4 @@ metadata:
     *Action:* Read `resources/setup_instructions.md`.
 
 3.  **Final Verification**
-    Check that `package.json` exists and the `.agent/rules/ionic.md` file is present in the new workspace.
+    Check that `package.json` exists and the `.agents/rules/ionic.md` file is present in the new workspace.

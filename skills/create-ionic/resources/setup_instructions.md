@@ -71,7 +71,7 @@ npm install
 ## 4. Configure Agent Rules
 Copy the AI rules to the project's agent configuration.
 
-*Action:* Create a file named `.agent/rules/ionic.md` inside the new workspace directory (`$WS_NAME/.agent/rules/ionic.md`).
+*Action:* Create a file named `.agents/rules/ionic.md` inside the new workspace directory (`$WS_NAME/.agents/rules/ionic.md`).
 *Content Source:* Read the content from the `airules.md` resource file provided with this skill.
 
 ## 5. Run Server
