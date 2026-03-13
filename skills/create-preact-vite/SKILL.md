@@ -31,12 +31,12 @@ Use this skill when the user wants to create a new Preact project using Vite, wi
    - Ensure Node.js is installed.
    - Create the Preact-Vite project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.agent/rules/preact.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/preact.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project
-   - `.agent/rules/preact.md` exists
+   - `.agents/rules/preact.md` exists
    - `index.html` exists
    - `src/main.tsx` (or `src/main.jsx` if using javascript) exists
