@@ -68,12 +68,12 @@ cd "$WS_NAME"
 npm install
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Run the following command to create the required `.agent/rules/vue.md` file inside your new workspace directory:
+Run the following command to create the required `.agents/rules/vue.md` file inside your new workspace directory:
 
 ```bash
-mkdir -p .agent/rules && cat ../skills/create-vue/resources/ai_rules.md > .agent/rules/vue.md
+mkdir -p .agents/rules && cat ../skills/create-vue/resources/ai_rules.md > .agents/rules/vue.md
 ```
 
 ## 5. Run the dev server
