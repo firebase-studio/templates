@@ -10,7 +10,7 @@ inputs:
 
 ## When to Use This Skill
 
-Use this skill when the user wants to create a new Python-based agent project using the Agent Development Kit (ADK) from the standard template and run it locally.
+Use this skill when the user wants to create a new Python-based agents project using the Agents Development Kit (ADK) from the standard template and run it locally.
 
 ## Instructions
 
@@ -24,8 +24,8 @@ Use this skill when the user wants to create a new Python-based agent project us
    - Ensure Python (3.10+) and the ADK are installed.
    - Create the workspace folder (using the `workspace_name` input).
    - Copy template files from `skills/create-adk/template` into the new workspace.
-   - Create the `.agent/rules/adk-app.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/adk-app.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
@@ -34,4 +34,4 @@ Use this skill when the user wants to create a new Python-based agent project us
    - `devserver.sh` exists in the new project
    - The `agents/` directory exists in the new project
    - The `tools/` directory exists in the new project
-   - `.agent/rules/adk-app.md` exists
+   - `.agents/rules/adk-app.md` exists
