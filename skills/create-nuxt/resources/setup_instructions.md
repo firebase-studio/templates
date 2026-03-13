@@ -37,13 +37,13 @@ cd "$WS_NAME"
 npm install
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create the `.agent/rules/` directory and copy the AI rules into it:
+Create the `.agents/rules/` directory and copy the AI rules into it:
 
 ```bash
-mkdir -p .agent/rules
-cp ../resources/ai_rules.md .agent/rules/nuxt.md
+mkdir -p .agents/rules
+cp ../resources/ai_rules.md .agents/rules/nuxt.md
 ```
 
 ## 5. Run the Development Server
