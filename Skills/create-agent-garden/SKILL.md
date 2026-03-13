@@ -22,10 +22,10 @@ Use this skill when the user wants to create a new agent project based on the ag
 2.  **Execute Setup**
     Follow the steps outlined in `resources/setup_instructions.md` to:
     - Create the agent project (using the `workspace_name` input).
-    - Create the `.agent/rules/agent-garden.md` file using the content from `resources/ai_rules.md`.
-      - Ensure the `.agent/rules/` directory exists.
+    - Create the `.agents/rules/agent-garden.md` file using the content from `resources/ai_rules.md`.
+      - Ensure the `.agents/rules/` directory exists.
 
 3.  **Final Verification**
     Check that:
     - `idx-template.json` exists in the new project.
-    - `.agent/rules/agent-garden.md` exists.
+    - `.agents/rules/agent-garden.md` exists.
