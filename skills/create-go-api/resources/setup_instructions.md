@@ -51,16 +51,16 @@ Then enter the workspace:
 
 cd "$WS_NAME"
 
-## 3. Configure Agent Rules
+## 3. Configure Agents Rules
 
-Create: .agent/rules/go-api.md inside the new workspace directory.
+Create: .agents/rules/go-api.md inside the new workspace directory.
 
 Copy the content from: resources/ai_rules.md
 
 Commands:
 
-mkdir -p .agent/rules
-# then create .agent/rules/go-api.md and paste contents from resources/ai_rules.md
+mkdir -p .agents/rules
+# then create .agents/rules/go-api.md and paste contents from resources/ai_rules.md
 
 ## 4. Run server
 go run main.go
