@@ -60,15 +60,15 @@ app.MapGet("/", () => "Hello World!");
 app.Run();
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create the `.agent/rules/dotnet-api.md` file inside the new workspace directory.
+Create the `.agents/rules/dotnet-api.md` file inside the new workspace directory.
 
 Copy the content from `skills/create-dotnet-api/resources/ai_rules.md`.
 
 ```bash
-mkdir -p .agent/rules
-# Then, create .agent/rules/dotnet-api.md and paste the contents from resources/ai_rules.md
+mkdir -p .agents/rules
+# Then, create .agents/rules/dotnet-api.md and paste the contents from resources/ai_rules.md
 ```
 
 ## 5. Run the server
