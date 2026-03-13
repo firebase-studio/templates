@@ -23,11 +23,11 @@ Use this skill when the user wants to create a new Eleventy project and wants th
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Eleventy project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/eleventy.md` file using the content from `resources/airules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/eleventy.md` file using the content from `resources/airules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project.
    - `index.md` exists.
-   - `.agent/rules/eleventy.md` exists.
+   - `.agents/rules/eleventy.md` exists.
