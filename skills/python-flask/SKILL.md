@@ -22,7 +22,7 @@ entrypoint: scripts/install_python_official.sh
 ---
 # Python Flask Project Skill
 
-This skill automates the creation of a new Python Flask project within the repository. It is designed to be executed by an AI agent (Antigravity) but can also be run manually.
+This skill automates the creation of a new Python Flask project within the repository. It is designed to be executed by an AI agents (Antigravity) but can also be run manually.
 
 ## Description
 
@@ -36,9 +36,9 @@ It also supports two different package managers:
 - **pip**: The standard Python package installer.
 - **poetry**: A modern Python dependency management tool.
 
-## Antigravity (Agent) Usage
+## Antigravity (Agents) Usage
 
-This skill is intended to be used by an AI agent. The agent reads the `skill.yaml` file to understand the available parameters and their possible values. The user can then specify their choices (e.g., "create a flask api with poetry"), and the agent will execute the `install_python_official.sh` script with the correct arguments.
+This skill is intended to be used by an AI agents. The agents reads the `skill.yaml` file to understand the available parameters and their possible values. The user can then specify their choices (e.g., "create a flask api with poetry"), and the agents will execute the `install_python_official.sh` script with the correct arguments.
 
 ### Parameters
 
@@ -47,7 +47,7 @@ This skill is intended to be used by an AI agent. The agent reads the `skill.yam
 
 ## Manual Usage
 
-While intended for agent use, the skill can be run directly from the command line.
+While intended for agents use, the skill can be run directly from the command line.
 
 ### Command
 
