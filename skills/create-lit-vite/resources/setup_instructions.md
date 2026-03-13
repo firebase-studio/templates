@@ -63,9 +63,9 @@ npm create -y vite@latest "$WS_NAME" -- --template lit
 cd "$WS_NAME"
 npm install
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create: .agent/rules/lit.md inside the new workspace directory
+Create: .agents/rules/lit.md inside the new workspace directory
 
 Copy the content from: resources/ai_rules.md
 
