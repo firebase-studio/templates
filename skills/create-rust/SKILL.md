@@ -24,4 +24,4 @@ metadata:
 
     *Action:* Verify that:
     - `$workspace_name/Cargo.toml` exists.
-    - `.agent/rules/rust.md` exists.
+    - `.agents/rules/rust.md` exists.
