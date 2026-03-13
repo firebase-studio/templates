@@ -33,4 +33,4 @@ Use this skill when the user wants to create a minimal C++ HTTP API project from
    - `CMakeLists.txt` exists in the new project
    - `Dockerfile` exists in the new project
    - `docker-compose.yml` exists in the new project
-   - `.agent/rules/cpp-api.md` exists
+   - `.agents/rules/cpp-api.md` exists
