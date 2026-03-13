@@ -30,26 +30,26 @@ To use this skill, follow these steps:
     cd <agent-name>
     ```
 
-4.  **Create the agent rules directory:**
+4.  **Create the agents rules directory:**
     ```bash
-    mkdir -p .agent/rules
+    mkdir -p .agents/rules
     ```
 
-5.  **Create the agent rules file:**
+5.  **Create the agents rules file:**
     ```bash
-    touch .agent/rules/agent-garden.md
+    touch .agents/rules/agent-garden.md
     ```
 2.  **Navigate to the new directory:**
     ```bash
     cd <agent-name>
     ```
 
-3.  **Create the agent rules directory:**
+3.  **Create the agents rules directory:**
     ```bash
-    mkdir -p .agent/rules
+    mkdir -p .agents/rules
     ```
 
-4.  **Create the agent rules file:**
+4.  **Create the agents rules file:**
     ```bash
-    touch .agent/rules/agent-garden.md
+    touch .agents/rules/agent-garden.md
     ```
