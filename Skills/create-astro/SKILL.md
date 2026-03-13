@@ -31,11 +31,11 @@ Use this skill when the user wants to create a new Astro project, and wants the 
     Follow the steps outlined in `resources/setup_instructions.md` to:
     - Create the Astro project (using the `workspace_name` and `template` inputs).
     - Install dependencies.
-    - Create the `.agent/rules/astro.md` file using the content from `resources/ai_rules.md`.
-      - Ensure the `.agent/rules/` directory exists.
+    - Create the `.agents/rules/astro.md` file using the content from `resources/ai_rules.md`.
+      - Ensure the `.agents/rules/` directory exists.
 
 3.  **Final Verification**
     Check that:
     - `package.json` exists in the new project
-    - `.agent/rules/astro.md` exists
+    - `.agents/rules/astro.md` exists
     - `src/pages/index.astro` exists
