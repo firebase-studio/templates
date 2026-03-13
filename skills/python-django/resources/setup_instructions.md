@@ -47,7 +47,7 @@ This single command handles the entire project and dependency setup.
 
 ---
 
-## 3. Configure Agent Rules
+## 3. Configure Agents Rules
 
 The setup script from the previous step has already configured the workspace for AI-assisted development by creating the following files inside your new project directory:
 - `.idx/airules.md`
