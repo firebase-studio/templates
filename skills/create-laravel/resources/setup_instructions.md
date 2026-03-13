@@ -69,9 +69,9 @@ composer install
 npm install
 ```
 
-## 5. Configure Agent Rules
+## 5. Configure Agents Rules
 
-Create: `.agent/rules/laravel.md` inside the new workspace directory
+Create: `.agents/rules/laravel.md` inside the new workspace directory
 
 Copy the content from: `resources/ai_rules.md`
 
