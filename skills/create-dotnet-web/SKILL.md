@@ -24,10 +24,10 @@ Use this skill when the user wants to create a new, minimal .NET web project. Th
     - Ensure the .NET SDK is installed (Version 8.0+). The skill can help install it.
     - Create the workspace folder (using the `workspace_name` input).
     - Initialize a new .NET minimal web project inside the workspace.
-    - Create the `.agent/rules/dotnet-web.md` file using the content from `resources/ai_rules.md`.
+    - Create the `.agents/rules/dotnet-web.md` file using the content from `resources/ai_rules.md`.
 
 3.  **Final Verification**
     Check that:
     - A `.csproj` file exists in the new project.
     - `Program.cs` exists in the new project.
-    - `.agent/rules/dotnet-web.md` exists.
+    - `.agents/rules/dotnet-web.md` exists.
