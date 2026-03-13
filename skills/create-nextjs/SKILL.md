@@ -30,11 +30,11 @@ Use this skill when the user wants to create a new Next.js project using `create
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Next.js project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.agent/rules/nextjs.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/nextjs.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project
-   - `.agent/rules/nextjs.md` exists
+   - `.agents/rules/nextjs.md` exists
    - `src/app/page.*` (or `app/page.*` depending on options) exists
