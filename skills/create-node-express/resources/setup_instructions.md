@@ -92,7 +92,7 @@ Install the project dependencies.
 npm install
 ```
 
-## 5. Configure Agent Rules
+## 5. Configure Agents Rules
 
 Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
