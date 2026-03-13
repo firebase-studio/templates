@@ -51,17 +51,17 @@ Then enter the workspace:
 cd "$WS_NAME"
 ```
 
-## 3. Configure Agent Rules
+## 3. Configure Agents Rules
 
-Create a file named `.agent/rules/cpp-api.md` inside the new workspace directory.
+Create a file named `.agents/rules/cpp-api.md` inside the new workspace directory.
 
 Copy the content from: `resources/ai_rules.md`
 
 Commands:
 
 ```bash
-mkdir -p .agent/rules
-# then create .agent/rules/cpp-api.md and paste contents from resources/ai_rules.md
+mkdir -p .agents/rules
+# then create .agents/rules/cpp-api.md and paste contents from resources/ai_rules.md
 ```
 
 ## 4. Run server
