@@ -81,9 +81,9 @@ npx create-next-app@latest "$WS_NAME" \
 cd "$WS_NAME"
 npm install
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create: .agent/rules/nextjs.md inside the new workspace directory
+Create: .agents/rules/nextjs.md inside the new workspace directory
 
 Copy the content from: resources/ai_rules.md
 
