@@ -73,7 +73,7 @@ npm install
 # or: yarn install, pnpm install, bun install
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
 Create a new file for the AI agent's rules inside the workspace directory:
 
