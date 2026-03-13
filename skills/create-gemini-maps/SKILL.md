@@ -33,8 +33,8 @@ Use this skill when the user wants to scaffold a new `gemini-maps` workspace.
     *   Analyze and fetch the repository: `https://github.com/firebase-studio/templates/tree/main/gemini-maps`
     *   Create a new directory named `$WS_NAME`.
     *   Copy the contents from the repo template's app folder into `$WS_NAME`, but **exclude** the `.idx` folder initially from the general copy.
-    *   Create the `.agent/rules` directory inside the new workspace (`$WS_NAME/.agent/rules`).
-    *   Use the contents of the fetched `.idx/airules` file to create `.agent/rules/gemini_maps.md` in the new workspace.
+    *   Create the `.agents/rules` directory inside the new workspace (`$WS_NAME/.agents/rules`).
+    *   Use the contents of the fetched `.idx/airules` file to create `.agents/rules/gemini_maps.md` in the new workspace.
     *   Copy all other files from the `.idx` directory into the root of the `$WS_NAME` workspace.
 
 4.  **Install Dependencies**
