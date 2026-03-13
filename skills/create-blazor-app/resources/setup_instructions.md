@@ -51,9 +51,9 @@ cd "$WS_NAME"
 ```
 The `dotnet new` command automatically restores dependencies. If you need to restore them again later, you can run `dotnet restore`.
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create the file `.agent/rules/dotnet.md` inside the new workspace directory.
+Create the file `.agents/rules/dotnet.md` inside the new workspace directory.
 
 Copy the content from `resources/ai_rules.md`.
 
