@@ -92,7 +92,7 @@ https://github.com/firebase-studio/templates/tree/main/gemini/<stack>
 Fetch the file tree to identify:
 
 - All files and folders **except** the `.idx/` directory — these will be copied into the workspace.
-- The file `.idx/airules.md` — this will become `.agent/rules/airules.md` in the workspace.
+- The file `.idx/airules.md` — this will become `.agents/rules/airules.md` in the workspace.
 
 > **Do NOT copy** any other `.idx/` contents.
 
@@ -115,7 +115,7 @@ Identify the additional or replacement files it contains — these will be layer
 
 ```bash
 mkdir -p $WS_NAME
-mkdir -p $WS_NAME/.agent/rules
+mkdir -p $WS_NAME/.agents/rules
 ```
 
 Replace `$WS_NAME` with the name chosen by the user (default: `my-app`).
@@ -138,7 +138,7 @@ Fetch `.idx/airules.md` and save it as the agent rules file:
 
 | Source | Destination |
 |---|---|
-| `https://raw.githubusercontent.com/firebase-studio/templates/main/gemini/<stack>/.idx/airules.md` | `$WS_NAME/.agent/rules/airules.md` |
+| `https://raw.githubusercontent.com/firebase-studio/templates/main/gemini/<stack>/.idx/airules.md` | `$WS_NAME/.agents/rules/airules.md` |
 
 *Action:* Use `read_url_content` to fetch, then `write_to_file` to write.
 

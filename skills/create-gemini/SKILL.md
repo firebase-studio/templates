@@ -88,7 +88,7 @@ https://github.com/firebase-studio/templates/tree/main/gemini/<stack>
 
 Identify:
 - All files and folders **except** the `.idx/` directory — these will be copied into the workspace.
-- The file `.idx/airules.md` — this will become `.agent/rules/airules.md` in the workspace.
+- The file `.idx/airules.md` — this will become `.agents/rules/airules.md` in the workspace.
 
 If the LangChain overlay is selected (`$LANGCHAIN=yes`), also inspect:
 
@@ -108,7 +108,7 @@ Create the workspace directory and copy all required template files.
 
 Key rules:
 - ✅ Copy all files **except** anything inside `.idx/`
-- ✅ Exception: fetch `.idx/airules.md` and write it to `$WS_NAME/.agent/rules/airules.md`
+- ✅ Exception: fetch `.idx/airules.md` and write it to `$WS_NAME/.agents/rules/airules.md`
 - ✅ Preserve sub-directory structure
 - ✅ Use `read_url_content` to fetch each file's raw content, then `write_to_file` to create it in the workspace
 - If `$LANGCHAIN=yes`: also copy files from the `langchain-overlay/<stack>` path — **overwrite** any files with the same name
