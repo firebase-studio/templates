@@ -93,11 +93,11 @@ Use this skill to create a new, customized SvelteKit project. It allows for the 
     - Build and execute the `npm create svelte` command with the correct flags based on user inputs.
     - Copy `init.js` and `package.json` from the `templates/sveltekit` directory into the new project.
     - Execute the `init.js` script, passing the selected integrations as arguments. This script will run `npx svelte-add` for each tool and install all dependencies.
-    - Create the `.agent/rules/sveltekit.md` file.
+    - Create the `.agents/rules/sveltekit.md` file.
 
 3.  **Final Verification**
     Check that the following files exist in the new project directory:
     - `package.json`
     - `init.js`
     - `svelte.config.js`
-    - `.agent/rules/sveltekit.md`
+    - `.agents/rules/sveltekit.md`
