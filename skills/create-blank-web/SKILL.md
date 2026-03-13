@@ -25,11 +25,11 @@ Use this skill when the user wants to create a new, modern blank web project fro
     - Create the workspace folder (using the `workspace_name` input).
     - Copy the `blank-web` template files into the new workspace.
     - Run `npm install` to install project dependencies.
-    - Create the `.agent/rules/blank-web.md` file using the content from `resources/ai_rules.md`.
+    - Create the `.agents/rules/blank-web.md` file using the content from `resources/ai_rules.md`.
 
 3.  **Final Verification**
     Check that:
     - `package.json` and `vite.config.js` exist in the new project root.
     - `index.html` and `src/main.js` exist.
     - The `node_modules` directory has been created.
-    - `.agent/rules/blank-web.md` exists.
+    - `.agents/rules/blank-web.md` exists.
