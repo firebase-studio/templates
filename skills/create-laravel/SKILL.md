@@ -22,11 +22,11 @@ Use this skill when the user wants to create a new Laravel project using `compos
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Laravel project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/laravel.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/laravel.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `composer.json` exists in the new project
-   - `.agent/rules/laravel.md` exists
+   - `.agents/rules/laravel.md` exists
    - `artisan` exists in the root of the project.
