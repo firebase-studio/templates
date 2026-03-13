@@ -24,12 +24,12 @@ Use this skill when the user wants to create a minimal Go HTTP API project (stdl
    - Ensure Go is installed (Go 1.20+).
    - Create the workspace folder (using the `workspace_name` input).
    - Copy template files from `go/api` into the new workspace.
-   - Create the `.agent/rules/go-api.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/go-api.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `main.go` exists in the new project
    - `go.mod` exists in the new project
    - `README.md` exists in the new project
-   - `.agent/rules/go-api.md` exists
+   - `.agents/rules/go-api.md` exists
