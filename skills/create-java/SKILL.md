@@ -23,8 +23,8 @@ Use this skill when the user wants to create a new "Hello world" Java Spring Boo
     Follow the steps outlined in `resources/setup_instructions.md` to:
     - Install prerequisites (Java + Maven).
     - Create the Spring Boot project (using the `workspace_name` input).
-    - Configure the `.agent/rules/java.md` file.
-      - Ensure the `.agent/rules/` directory exists.
+    - Configure the `.agents/rules/java.md` file.
+      - Ensure the `.agents/rules/` directory exists.
 
 3.  **Implement "Hello World" Endpoint**
     *Goal:* The application needs to serve a "Hello world" message.
@@ -33,5 +33,5 @@ Use this skill when the user wants to create a new "Hello world" Java Spring Boo
 4.  **Final Verification**
     Check that:
     - `pom.xml` exists in the new project.
-    - `.agent/rules/java.md` exists.
+    - `.agents/rules/java.md` exists.
     - The source code for the "Hello World" REST controller exists and is correctly placed.
