@@ -66,7 +66,7 @@ cd "$WS_NAME"
 npm install --package-lock-only --ignore-scripts
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
 Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
