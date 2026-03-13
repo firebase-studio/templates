@@ -23,11 +23,11 @@ Use this skill when the user wants to create a new Remix project using `create-r
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Remix project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/remix.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/remix.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project.
-   - `.agent/rules/remix.md` exists.
+   - `.agents/rules/remix.md` exists.
    - `app/root.tsx` exists.
