@@ -22,10 +22,10 @@ Use this skill when the user wants to create a new Dart project.
 2. **Execute Setup**
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Dart project (using the `workspace_name` input).
-   - Create the `.agent/rules/dart.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/dart.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `pubspec.yaml` exists in the new project
-   - `.agent/rules/dart.md` exists
+   - `.agents/rules/dart.md` exists
