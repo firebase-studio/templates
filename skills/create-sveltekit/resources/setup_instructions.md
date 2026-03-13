@@ -81,13 +81,13 @@ echo "Running post-scaffolding configuration: $INIT_CMD"
 eval "$INIT_CMD"
 ```
 
-## 3. Configure Agent Rules
+## 3. Configure Agents Rules
 
 This step copies the AI rules file into the new workspace.
 
 ```bash
-mkdir -p ".agent/rules"
-cp "../skills/sveltekit/resources/ai_rules.md" ".agent/rules/sveltekit.md"
+mkdir -p ".agents/rules"
+cp "../skills/sveltekit/resources/ai_rules.md" ".agents/rules/sveltekit.md"
 ```
 
 ## 4. Run Server / Development Environment
