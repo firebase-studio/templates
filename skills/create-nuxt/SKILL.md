@@ -28,7 +28,7 @@ Use this skill when the user wants to create a new Nuxt.js project using `npx nu
     Follow the steps outlined in `resources/setup_instructions.md` to perform the following actions:
     - Create the Nuxt.js project using `npx nuxi init`.
     - Install project dependencies.
-    - Copy the AI rules from `resources/ai_rules.md` to `.agent/rules/nuxt.md` in the new project.
+    - Copy the AI rules from `resources/ai_rules.md` to `.agents/rules/nuxt.md` in the new project.
 
 3.  **Final Verification**
-    Confirm that `package.json`, `.agent/rules/nuxt.md`, and `app.vue` exist in the new project directory.
+    Confirm that `package.json`, `.agents/rules/nuxt.md`, and `app.vue` exist in the new project directory.
