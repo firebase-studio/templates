@@ -32,7 +32,7 @@ Copy the PHP template files into the new directory.
 cp -r ../../php/app/* .
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
 Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
