@@ -76,13 +76,13 @@ pip install -r requirements.txt
 
 ## 5. Run the Development Server
 
-Use the `devserver.sh` script to start your ADK agent.
+Use the `devserver.sh` script to start your ADK agents.
 
 ```bash
 bash devserver.sh
 ```
 
-Your ADK agent is now running and ready for development.
+Your ADK agents is now running and ready for development.
 
 **Open the application in your browser:**
     The application will be available at [http://localhost:8000](http://localhost:8000).
