@@ -102,9 +102,9 @@ Got dependencies!
 Try `dart pub outdated` for more information.
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create `.agent/rules/dart.md` inside the new workspace directory and copy the content from `skills/create-dart/resources/ai_rules.md`.
+Create `.agents/rules/dart.md` inside the new workspace directory and copy the content from `skills/create-dart/resources/ai_rules.md`.
 
 ## 5. Run server
 
