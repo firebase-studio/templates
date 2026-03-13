@@ -60,8 +60,8 @@ npm install
 ## 4. Configure Agent Rules
 
 ```bash
-mkdir -p ".agent/rules"
-cp "../skills/qwik-city-vite/resources/ai_rules.md" ".agent/rules/qwik-city-vite.md"
+mkdir -p ".agents/rules"
+cp "../skills/qwik-city-vite/resources/ai_rules.md" ".agents/rules/qwik-city-vite.md"
 ```
 
 ## 5. Run server
