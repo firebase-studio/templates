@@ -24,8 +24,8 @@ Use this skill when the user wants to create a minimal C++ HTTP API project from
    - Ensure Docker is installed.
    - Create the workspace folder (using the `workspace_name` input).
    - Copy template files from `cpp/app` into the new workspace.
-   - Create the `.agent/rules/cpp-api.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/cpp-api.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
