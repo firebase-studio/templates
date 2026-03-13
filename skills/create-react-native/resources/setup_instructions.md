@@ -77,7 +77,7 @@ npm install
 
 Create a new file for the AI agent's rules inside the workspace directory:
 
-- `.agent/rules/react_native.md`
+- `.agents/rules/react_native.md`
 
 Copy the content from this skill's resources into the file you just created:
 

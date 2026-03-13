@@ -39,11 +39,11 @@ Use this skill when the user wants to create a new React Native project using Ex
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Expo project (using the `workspace_name`, `language`, and `packageManager` inputs).
    - Install dependencies.
-   - Create the `.agent/rules/react_native.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/react_native.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project directory.
-   - `.agent/rules/react_native.md` exists.
+   - `.agents/rules/react_native.md` exists.
    - `App.tsx` (for TypeScript) or `App.js` (for JavaScript) exists in the project's root.
