@@ -23,11 +23,11 @@ Use this skill when the user wants to create a new Angular project using `@angul
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Angular project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/angular.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/angular.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project
-   - `.agent/rules/angular.md` exists
+   - `.agents/rules/angular.md` exists
    - `src/app/app.component.ts` exists
