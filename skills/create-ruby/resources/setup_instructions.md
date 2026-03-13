@@ -64,7 +64,7 @@ https://github.com/firebase-studio/templates/tree/main/ruby
 Fetch the raw file tree to understand what is inside the `app` folder (i.e. everything at the repository root under `ruby/`). Identify:
 
 - All files and folders **except** the `.idx/` directory — these will be copied into the workspace.
-- The file `.idx/airules.md` — this will become `.agent/rules/ruby.md` in the workspace.
+- The file `.idx/airules.md` — this will become `.agents/rules/ruby.md` in the workspace.
 
 > **Note:** The `app` folder in the context of this skill means the root of the `ruby/` directory in the repository (i.e. `app.rb`, `Gemfile`, `Gemfile.lock`, `Dockerfile`, `.dockerignore`, `README.md`). Do NOT copy `.idx/` directory contents except `airules.md`.
 
@@ -103,9 +103,9 @@ Fetch the `airules.md` file from the `.idx/` folder and save it as the agent rul
 
 | Source                                        | Destination                          |
 |-----------------------------------------------|--------------------------------------|
-| `.../ruby/.idx/airules.md` (raw GitHub URL)   | `$WS_NAME/.agent/rules/ruby.md`      |
+| `.../ruby/.idx/airules.md` (raw GitHub URL)   | `$WS_NAME/.agents/rules/ruby.md`      |
 
-*Action:* Fetch the raw content and write it to `$WS_NAME/.agent/rules/ruby.md` (create the directory if needed).
+*Action:* Fetch the raw content and write it to `$WS_NAME/.agents/rules/ruby.md` (create the directory if needed).
 
 ### 3d. Add VS Code / IDE extension recommendation
 

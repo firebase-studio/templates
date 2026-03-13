@@ -48,4 +48,4 @@ Use this skill when the user wants to create a new Ruby API Starter workspace.
    *Action:* Check that the following exist inside `$WS_NAME`:
    - `Gemfile`
    - `app.rb`
-   - `.agent/rules/ruby.md`
+   - `.agents/rules/ruby.md`
