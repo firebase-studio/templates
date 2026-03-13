@@ -72,9 +72,9 @@ Create a file named `index.md` in the root of your project:
 # Hello, Eleventy!
 ```
 
-## 5. Configure Agent Rules
+## 5. Configure Agents Rules
 
-Create: `.agent/rules/eleventy.md` inside the new workspace directory
+Create: `.agents/rules/eleventy.md` inside the new workspace directory
 
 Copy the content from: `resources/airules.md`
 
