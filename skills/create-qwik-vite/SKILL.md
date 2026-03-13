@@ -23,11 +23,11 @@ Use this skill when the user wants to create a new Qwik project using Vite, and 
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Qwik project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/qwik-vite.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/qwik-vite.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `vite.config.ts` exists in the new project directory.
-   - `.agent/rules/qwik-vite.md` exists.
+   - `.agents/rules/qwik-vite.md` exists.
    - `src/main.tsx` exists in the project's root.
