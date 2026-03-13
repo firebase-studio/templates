@@ -97,10 +97,10 @@ npm install
 Create the directory for the AI agent's rules. The skill will then copy the rule file into it.
 
 ```bash
-mkdir -p .agent/rules
+mkdir -p .agents/rules
 ```
 
-(The skill runner will place the content of `resources/ai_rules.md` into `.agent/rules/node-express.md`)
+(The skill runner will place the content of `resources/ai_rules.md` into `.agents/rules/node-express.md`)
 
 
 ## 6. Run the Development Server

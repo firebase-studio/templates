@@ -33,5 +33,5 @@ Use this skill when the user wants to create a new Node.js project using Express
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Node.js Express project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/node-express.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/node-express.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
