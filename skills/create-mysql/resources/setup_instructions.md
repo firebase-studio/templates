@@ -64,13 +64,13 @@ To run it, open a terminal and execute:
 node index.js
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
 To give the AI assistant context about your project, copy the provided rules file.
 
-Create a new directory and file for the agent rules:
+Create a new directory and file for the agents rules:
 
 ```bash
-mkdir -p .agent/rules
-cp skills/create-mysql/resources/ai_rules.md .agent/rules/mysql.md
+mkdir -p .agents/rules
+cp skills/create-mysql/resources/ai_rules.md .agents/rules/mysql.md
 ```
