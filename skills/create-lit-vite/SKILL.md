@@ -31,12 +31,12 @@ Use this skill when the user wants to create a new Lit project using Vite, with 
    - Ensure Node.js is installed.
    - Create the Lit-Vite project (using the `workspace_name` and `language` inputs).
    - Install dependencies.
-   - Create the `.agent/rules/lit.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/lit.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project
-   - `.agent/rules/lit.md` exists
+   - `.agents/rules/lit.md` exists
    - `index.html` exists
    - `src/my-element.ts` (or `src/my-element.js` if using javascript) exists
