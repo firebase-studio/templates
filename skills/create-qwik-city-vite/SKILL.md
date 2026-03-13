@@ -23,11 +23,11 @@ Use this skill when the user wants to create a new Qwik City project using `crea
    Follow the steps outlined in `resources/setup_instructions.md` to:
    - Create the Qwik City project (using the `workspace_name` input).
    - Install dependencies.
-   - Create the `.agent/rules/qwik-city-vite.md` file using the content from `resources/ai_rules.md`.
-     - Ensure the `.agent/rules/` directory exists.
+   - Create the `.agents/rules/qwik-city-vite.md` file using the content from `resources/ai_rules.md`.
+     - Ensure the `.agents/rules/` directory exists.
 
 3. **Final Verification**
    Check that:
    - `package.json` exists in the new project.
-   - `.agent/rules/qwik-city-vite.md` exists.
+   - `.agents/rules/qwik-city-vite.md` exists.
    - `src/routes/index.tsx` exists.
