@@ -60,16 +60,16 @@ Once inside the new workspace, install the npm packages:
 npm install
 ```
 
-## 4. Configure Agent Rules
+## 4. Configure Agents Rules
 
-Create: .agent/rules/blank-web.md inside the new workspace directory.
+Create: .agents/rules/blank-web.md inside the new workspace directory.
 
 Copy the content from: resources/ai_rules.md
 
 Commands:
 
-mkdir -p .agent/rules
-# then create .agent/rules/blank-web.md and paste contents from resources/ai_rules.md
+mkdir -p .agents/rules
+# then create .agents/rules/blank-web.md and paste contents from resources/ai_rules.md
 
 ## 5. Run server
 
