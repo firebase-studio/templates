@@ -26,5 +26,10 @@ Use this skill when a user wants to start a new HTMX project and has expressed a
 3.  **AI Rules**
     Custom AI rules for the selected backend will be copied into the `.idx/` directory to provide tailored assistance.
 
-4.  **Final Verification**
-    Confirm that the correct backend files (e.g., `main.go` for Go, `index.js` for Node.js) and the `index.html` file are present in the project's root directory.
+4.  **Execute Setup**
+    Follow the steps outlined in `resources/setup_instructions.md` to perform the following actions:
+    - Install project dependencies.
+    - Copy the AI rules from `resources/ai_rules.md` to `.agents/rules/htmx/go.md` and .agents/rules/htmx/node.md in the new project.
+
+5.  **Final Verification**
+    Confirm that `package.json`, `.agents/rules/htmx.md`, and `app.vue` and correct backend files (e.g., `main.go` for Go, `index.js` for Node.js) and the `index.html` file are present in the         project's root or new directory.
