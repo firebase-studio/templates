@@ -1,16 +1,16 @@
-import { z } from 'genkit';
+import { z } from 'zod';
 
 export const HNItemSchema = z.object({
-  id: z.number().optional(),
-  title: z.string().optional(),
-  points: z.number().nullable().optional(),
-  user: z.string().nullable().optional(),
-  time: z.number().optional(),
-  time_ago: z.string().optional(),
-  comments_count: z.number().optional(),
-  type: z.string().optional(),
-  url: z.string().optional(),
+  id: z.number(),
+  title: z.string(),
+  points: z.number().nullable(),
+  user: z.string().nullable(),
+  time: z.number(),
+  time_ago: z.string(),
+  comments_count: z.number(),
+  type: z.string(),
+  url: z.string(),
   domain: z.string().optional(),
 });
 
-export const HNItemsSchema = z.array(HNItemSchema.partial());
+export const HNItemsSchema = z.array(HNItemSchema);

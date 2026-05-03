@@ -2,7 +2,7 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
+  channel = "stable-25.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
@@ -13,6 +13,7 @@
   env = {
     #TODO Get a API key from https://g.co/ai/idxGetGeminiKey 
     GOOGLE_GENAI_API_KEY = "TODO"; 
+    CLOUDSDK_CORE_DISABLE_PROMPTS = "1";
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
@@ -32,6 +33,15 @@
       # Runs when the workspace is (re)started
       onStart = {
         run-server = "npm run dev";
+      };
+    };
+     previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = ["sh" "-c" "GENKIT_ENV=dev genkit start --port $PORT -- npx tsx --watch index.ts"];
+          manager = "web";
+        };
       };
     };
   };

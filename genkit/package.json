@@ -5,19 +5,23 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "genkit start -- npx tsx --watch index.ts",
-    "create:env": "echo '#!/usr/bin/env bash\n\n# source ./set_env.sh\nexport GOOGLEAI_API_KEY=\"\"' > set_env.sh"
+    "dev": "GENKIT_ENV=dev genkit start -- npx tsx --watch index.ts",
+    "build": "tsc",
+    "create:env": "echo \"GOOGLEAI_API_KEY='<YOUR_API_KEY>'\" > .env"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "genkit-cli": "^1.0.5",
-    "tsx": "^4.20.3",
-    "typescript": "^5.6.3"
+    "genkit-cli": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
   },
   "dependencies": {
+    "@genkit-ai/core": "^1.0.5",
+    "@genkit-ai/firebase": "^1.0.5",
+    "@genkit-ai/flow": "latest",
     "@genkit-ai/googleai": "^1.0.5",
-    "genkit": "^1.0.5"
+    "zod": "^3.24.2"
   }
 }
