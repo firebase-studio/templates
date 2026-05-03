@@ -15,7 +15,8 @@
         "options": {
           "web": "Web server",
           "web-template": "Web server with HTML templates",
-          "api": "API Server"
+          "api": "API Server",
+          "api-gingonic": "API-Gingonic"
         }
       }
     ]
