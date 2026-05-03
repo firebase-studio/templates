@@ -2,17 +2,20 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
+  channel = "stable-24.05";
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
+    pkgs.nodePackages.eslint
+    pkgs.nodePackages.prettier
   ];
   # Sets environment variables in the workspace
   env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
+      "dbaeumer.vscode-eslint"
+      "esbenp.prettier-vscode"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -23,12 +26,14 @@
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
-    # Enable previews and customize configuration
+    # Enable previews and define the ports to expose
     previews = {
       enable = true;
       previews = {
         web = {
-          command = ["npm" "run" "dev" "--" "--port" "$PORT" "--host" "0.0.0.0"];
+          # The command to start your app
+          command = ["npm" "run" "dev" "--" "--port" "$PORT"];
+          # The port your app is listening on
           manager = "web";
         };
       };
