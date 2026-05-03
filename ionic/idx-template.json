@@ -1,0 +1,24 @@
+{
+  "name": "Ionic Angular",
+  "description": "Create a new Ionic app with Angular",
+  "categories": [
+      "Mobile & Web App"
+  ],
+  "params": [
+      {
+          "id": "type",
+          "name": "Framework",
+          "type": "enum",
+          "default": "angular",
+          "options": {
+              "angular": "Angular",
+              "react": "React",
+              "vue": "Vue"
+          }
+      }
+  ],
+  "host": {
+      "virtualization": true
+  },
+  "icon": "https://www.vectorlogo.zone/logos/ionicframework/ionicframework-icon.svg"
+}
